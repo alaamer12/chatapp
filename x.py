@@ -122,10 +122,7 @@ if not os.path.exists("../.gitignore"):
 try:
     subprocess.run(["gh", "repo", "create", directory_name, "--public"], cwd=current_directory)
 except subprocess.CalledProcessError as e:
-    try:
-        subprocess.run(["gh", "repo", "create", f"{directory_name}_2", "--public"], cwd=current_directory)
-    except:
-        print(f"Failed to create repo on GitHub: {e}")
+    print(f"Failed to create repo on GitHub: {e}")
     # pass
 
 
