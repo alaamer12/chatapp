@@ -1,2 +1,7 @@
-pyqt5
+pyqt5~=5.15.10
 pyqt5-stubs
+pytest
+mysql
+mysql-connector-python
+icecream
+colorama~=0.4.6
