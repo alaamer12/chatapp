@@ -1,0 +1,15 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>icons/Send_hor 48x48.png</file>
+    <file>icons/Send_hor.png</file>
+    <file>icons/Group 1.png</file>
+    <file>icons/settings.png</file>
+    <file>icons/Sign-out.png</file>
+    <file>icons/Vector.png</file>
+  </qresource>
+  <qresource prefix="images">
+    <file>images/User_cicrle_duotone 72x72.png</file>
+    <file>images/User_cicrle_duotone 48x48.png</file>
+    <file>images/User_cicrle_duotone.png</file>
+  </qresource>
+</RCC>

@@ -1,13 +1,13 @@
 from colorama import Fore
 
 
-def print_info(self, *messages):
+def print_info(*messages):
     print(Fore.BLUE + 'INFO: ', *messages, Fore.RESET)
 
 
-def print_error(self, *messages):
+def print_error(*messages):
     print(Fore.RED + 'ERROR: ', *messages, Fore.RESET)
 
 
-def print_warning(self, *messages):
+def print_warning(*messages):
     print(Fore.YELLOW + 'WARNING: ', *messages, Fore.RESET)

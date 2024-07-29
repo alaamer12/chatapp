@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui_main.ui'
+# Form implementation generated from reading ui file '.\ui_main.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.10
 #
@@ -9,31 +9,670 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+import assets.assets as assets_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(800, 600)
+        MainWindow.setEnabled(True)
+        MainWindow.resize(842, 641)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
+        MainWindow.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setPointSize(36)
+        font.setBold(True)
+        font.setWeight(75)
+        MainWindow.setFont(font)
+        MainWindow.setAcceptDrops(False)
+        MainWindow.setWindowOpacity(1.0)
+        MainWindow.setToolTip("")
+        MainWindow.setAutoFillBackground(False)
+        MainWindow.setStyleSheet("background-color: rgb(18, 18, 18);")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setStyleSheet("QWidget *widget= new QWidget(this);\n"
+"QPushButton *btn1 = new QPushButton();\n"
+"QPushButton *btn2 = new QPushButton();\n"
+"QPushButton *btn3 = new QPushButton();\n"
+"QHBoxLayout *horizontal_bottom = new QHBoxLayout();\n"
+"\n"
+"  horizontal_bottom->setSpacing(0);\n"
+"  horizontal_bottom->addWidget(btn1 );\n"
+"  horizontal_bottom->addWidget(btn2);\n"
+"  horizontal_bottom->addWidget(btn3);\n"
+"  horizontal_bottom->setContentsMargins(0,0,0,0);\n"
+"  widget->setLayout(horizontal_bottom);")
         self.centralwidget.setObjectName("centralwidget")
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(130, 100, 541, 351))
-        self.label.setStyleSheet("*{font-size: 100px}")
+        self.stackedWidget_2 = QtWidgets.QStackedWidget(self.centralwidget)
+        self.stackedWidget_2.setGeometry(QtCore.QRect(0, -10, 851, 651))
+        self.stackedWidget_2.setStyleSheet("QWidget *widget= new QWidget(this);\n"
+"QPushButton *btn1 = new QPushButton();\n"
+"QPushButton *btn2 = new QPushButton();\n"
+"QPushButton *btn3 = new QPushButton();\n"
+"QHBoxLayout *horizontal_bottom = new QHBoxLayout();\n"
+"\n"
+"  horizontal_bottom->setSpacing(0);\n"
+"  horizontal_bottom->addWidget(btn1 );\n"
+"  horizontal_bottom->addWidget(btn2);\n"
+"  horizontal_bottom->addWidget(btn3);\n"
+"  horizontal_bottom->setContentsMargins(0,0,0,0);\n"
+"  widget->setLayout(horizontal_bottom);")
+        self.stackedWidget_2.setObjectName("stackedWidget_2")
+        self.singin_page = QtWidgets.QWidget()
+        self.singin_page.setBaseSize(QtCore.QSize(0, 0))
+        self.singin_page.setObjectName("singin_page")
+        self.widget_9 = QtWidgets.QWidget(self.singin_page)
+        self.widget_9.setGeometry(QtCore.QRect(0, -10, 854, 651))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Maximum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.widget_9.sizePolicy().hasHeightForWidth())
+        self.widget_9.setSizePolicy(sizePolicy)
+        self.widget_9.setObjectName("widget_9")
+        self.username_textinput = QtWidgets.QLineEdit(self.widget_9)
+        self.username_textinput.setGeometry(QtCore.QRect(260, 290, 321, 41))
+        self.username_textinput.setStyleSheet("QLineEdit {\n"
+"    color: rgb(255, 255, 255);\n"
+"    border: 2px solid #cccccc; \n"
+"    border-radius: 10px;       \n"
+"    padding: 5px;            \n"
+"    background-color: #121212;  \n"
+"\n"
+"}\n"
+"")
+        self.username_textinput.setText("")
+        self.username_textinput.setObjectName("username_textinput")
+        self.signup_button = QtWidgets.QPushButton(self.widget_9)
+        self.signup_button.setGeometry(QtCore.QRect(460, 580, 75, 23))
+        self.signup_button.setStyleSheet("QPushButton {\n"
+"    border: 2px solid #cccccc;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px;\n"
+"    background-color: #f0f0f0;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: ;\n"
+"}")
+        self.signup_button.setObjectName("signup_button")
+        self.login_button = QtWidgets.QPushButton(self.widget_9)
+        self.login_button.setGeometry(QtCore.QRect(350, 490, 141, 51))
+        self.login_button.setAutoFillBackground(False)
+        self.login_button.setStyleSheet("QPushButton {\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 75 16pt \"MS Shell Dlg 2\";\n"
+"    border: 2px solid #cccccc;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px;\n"
+"    background-color: #121212  ;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color:   ;\n"
+"}")
+        self.login_button.setObjectName("login_button")
+        self.label_33 = QtWidgets.QLabel(self.widget_9)
+        self.label_33.setGeometry(QtCore.QRect(340, 30, 181, 181))
+        font = QtGui.QFont()
+        font.setPointSize(36)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_33.setFont(font)
+        self.label_33.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label_33.setObjectName("label_33")
+        self.label_34 = QtWidgets.QLabel(self.widget_9)
+        self.label_34.setGeometry(QtCore.QRect(260, 240, 111, 31))
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_34.setFont(font)
+        self.label_34.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label_34.setObjectName("label_34")
+        self.password_textinput = QtWidgets.QLineEdit(self.widget_9)
+        self.password_textinput.setGeometry(QtCore.QRect(260, 410, 321, 41))
+        self.password_textinput.setStyleSheet("QLineEdit {\n"
+"    color: rgb(255, 255, 255);\n"
+"    border: 2px solid #cccccc; \n"
+"    border-radius: 10px;       \n"
+"    padding: 5px;            \n"
+"    background-color: #121212;  \n"
+"\n"
+"}\n"
+"")
+        self.password_textinput.setText("")
+        self.password_textinput.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.password_textinput.setObjectName("password_textinput")
+        self.label_35 = QtWidgets.QLabel(self.widget_9)
+        self.label_35.setGeometry(QtCore.QRect(270, 360, 111, 31))
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_35.setFont(font)
+        self.label_35.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label_35.setObjectName("label_35")
+        self.label_36 = QtWidgets.QLabel(self.widget_9)
+        self.label_36.setGeometry(QtCore.QRect(320, 580, 121, 21))
+        self.label_36.setStyleSheet("background-color: rgb(18, 18, 18);\n"
+"color: rgb(255, 53, 97);")
+        self.label_36.setObjectName("label_36")
+        self.stackedWidget_2.addWidget(self.singin_page)
+        self.signup_page = QtWidgets.QWidget()
+        self.signup_page.setObjectName("signup_page")
+        self.widget_10 = QtWidgets.QWidget(self.signup_page)
+        self.widget_10.setGeometry(QtCore.QRect(0, -10, 854, 651))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Maximum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.widget_10.sizePolicy().hasHeightForWidth())
+        self.widget_10.setSizePolicy(sizePolicy)
+        self.widget_10.setObjectName("widget_10")
+        self.lineEdit_19 = QtWidgets.QLineEdit(self.widget_10)
+        self.lineEdit_19.setGeometry(QtCore.QRect(150, 290, 321, 41))
+        self.lineEdit_19.setStyleSheet("QLineEdit {\n"
+"    color: rgb(255, 255, 255);\n"
+"    border: 2px solid #cccccc; \n"
+"    border-radius: 10px;       \n"
+"    padding: 5px;            \n"
+"    background-color: #121212;  \n"
+"\n"
+"}\n"
+"")
+        self.lineEdit_19.setText("")
+        self.lineEdit_19.setObjectName("lineEdit_19")
+        self.pushButton_21 = QtWidgets.QPushButton(self.widget_10)
+        self.pushButton_21.setGeometry(QtCore.QRect(460, 580, 75, 23))
+        self.pushButton_21.setStyleSheet("font: 75 11pt \"MS Shell Dlg 2\";\n"
+"background-color: rgb(18, 18, 18);\n"
+"color: rgb(255, 255, 255);")
+        self.pushButton_21.setObjectName("pushButton_21")
+        self.pushButton_22 = QtWidgets.QPushButton(self.widget_10)
+        self.pushButton_22.setGeometry(QtCore.QRect(400, 490, 141, 51))
+        self.pushButton_22.setAutoFillBackground(False)
+        self.pushButton_22.setStyleSheet("QPushButton {\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 75 16pt \"MS Shell Dlg 2\";\n"
+"    border: 2px solid #cccccc;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px;\n"
+"    background-color: #121212  ;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color:   ;\n"
+"}")
+        self.pushButton_22.setObjectName("pushButton_22")
+        self.label_37 = QtWidgets.QLabel(self.widget_10)
+        self.label_37.setGeometry(QtCore.QRect(340, 30, 191, 181))
+        font = QtGui.QFont()
+        font.setPointSize(36)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_37.setFont(font)
+        self.label_37.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label_37.setObjectName("label_37")
+        self.label_38 = QtWidgets.QLabel(self.widget_10)
+        self.label_38.setGeometry(QtCore.QRect(150, 240, 111, 31))
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_38.setFont(font)
+        self.label_38.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label_38.setObjectName("label_38")
+        self.lineEdit_20 = QtWidgets.QLineEdit(self.widget_10)
+        self.lineEdit_20.setGeometry(QtCore.QRect(150, 410, 321, 41))
+        self.lineEdit_20.setStyleSheet("QLineEdit {\n"
+"    color: rgb(255, 255, 255);\n"
+"    border: 2px solid #cccccc; \n"
+"    border-radius: 10px;       \n"
+"    padding: 5px;            \n"
+"    background-color: #121212;  \n"
+"\n"
+"}\n"
+"")
+        self.lineEdit_20.setText("")
+        self.lineEdit_20.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.lineEdit_20.setObjectName("lineEdit_20")
+        self.label_39 = QtWidgets.QLabel(self.widget_10)
+        self.label_39.setGeometry(QtCore.QRect(150, 360, 111, 31))
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_39.setFont(font)
+        self.label_39.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label_39.setObjectName("label_39")
+        self.label_40 = QtWidgets.QLabel(self.widget_10)
+        self.label_40.setGeometry(QtCore.QRect(320, 580, 121, 21))
+        self.label_40.setStyleSheet("background-color: rgb(18, 18, 18);\n"
+"color: rgb(255, 53, 97);")
+        self.label_40.setObjectName("label_40")
+        self.widget_11 = QtWidgets.QWidget(self.widget_10)
+        self.widget_11.setGeometry(QtCore.QRect(0, 0, 901, 651))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Maximum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.widget_11.sizePolicy().hasHeightForWidth())
+        self.widget_11.setSizePolicy(sizePolicy)
+        self.widget_11.setObjectName("widget_11")
+        self.username_textinput_2 = QtWidgets.QLineEdit(self.widget_11)
+        self.username_textinput_2.setGeometry(QtCore.QRect(170, 380, 501, 41))
+        self.username_textinput_2.setStyleSheet("QLineEdit {\n"
+"    color: rgb(255, 255, 255);\n"
+"    border: 2px solid #cccccc; \n"
+"    border-radius: 10px;       \n"
+"    padding: 5px;            \n"
+"    background-color: #121212;  \n"
+"\n"
+"}\n"
+"")
+        self.username_textinput_2.setText("")
+        self.username_textinput_2.setObjectName("username_textinput_2")
+        self.label_41 = QtWidgets.QLabel(self.widget_11)
+        self.label_41.setGeometry(QtCore.QRect(340, 30, 191, 181))
+        font = QtGui.QFont()
+        font.setPointSize(36)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_41.setFont(font)
+        self.label_41.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label_41.setObjectName("label_41")
+        self.label_42 = QtWidgets.QLabel(self.widget_11)
+        self.label_42.setGeometry(QtCore.QRect(180, 330, 111, 31))
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_42.setFont(font)
+        self.label_42.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label_42.setObjectName("label_42")
+        self.password_textinput_2 = QtWidgets.QLineEdit(self.widget_11)
+        self.password_textinput_2.setGeometry(QtCore.QRect(170, 500, 501, 41))
+        self.password_textinput_2.setStyleSheet("QLineEdit {\n"
+"    color: rgb(255, 255, 255);\n"
+"    border: 2px solid #cccccc; \n"
+"    border-radius: 10px;       \n"
+"    padding: 5px;            \n"
+"    background-color: #121212;  \n"
+"\n"
+"}\n"
+"")
+        self.password_textinput_2.setText("")
+        self.password_textinput_2.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.password_textinput_2.setObjectName("password_textinput_2")
+        self.label_43 = QtWidgets.QLabel(self.widget_11)
+        self.label_43.setGeometry(QtCore.QRect(180, 450, 111, 31))
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_43.setFont(font)
+        self.label_43.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label_43.setObjectName("label_43")
+        self.name_textinput = QtWidgets.QLineEdit(self.widget_11)
+        self.name_textinput.setGeometry(QtCore.QRect(170, 260, 501, 41))
+        self.name_textinput.setStyleSheet("QLineEdit {\n"
+"    color: rgb(255, 255, 255);\n"
+"    border: 2px solid #cccccc; \n"
+"    border-radius: 10px;       \n"
+"    padding: 5px;            \n"
+"    background-color: #121212;  \n"
+"\n"
+"}\n"
+"")
+        self.name_textinput.setText("")
+        self.name_textinput.setObjectName("name_textinput")
+        self.label_44 = QtWidgets.QLabel(self.widget_11)
+        self.label_44.setGeometry(QtCore.QRect(180, 200, 111, 31))
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_44.setFont(font)
+        self.label_44.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label_44.setObjectName("label_44")
+        self.signup_button_2 = QtWidgets.QPushButton(self.widget_11)
+        self.signup_button_2.setGeometry(QtCore.QRect(350, 570, 141, 51))
+        self.signup_button_2.setStyleSheet("QPushButton {\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 75 16pt \"MS Shell Dlg 2\";\n"
+"    border: 2px solid #cccccc;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px;\n"
+"    background-color: #121212  ;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color:   ;\n"
+"}")
+        self.signup_button_2.setObjectName("signup_button_2")
+        self.stackedWidget_2.addWidget(self.signup_page)
+        self.message_page = QtWidgets.QWidget()
+        self.message_page.setObjectName("message_page")
+        self.buttons_3 = QtWidgets.QWidget(self.message_page)
+        self.buttons_3.setGeometry(QtCore.QRect(0, -10, 91, 691))
+        self.buttons_3.setStyleSheet("background-color: rgb(30, 30, 30);")
+        self.buttons_3.setObjectName("buttons_3")
+        self.butto = QtWidgets.QPushButton(self.buttons_3)
+        self.butto.setGeometry(QtCore.QRect(0, 30, 91, 61))
+        self.butto.setStyleSheet("QPushButton{\n"
+"background-image:url(:/icons/icons/Vector.png);\n"
+" background-position: center;\n"
+"background-size: 50px;\n"
+" background-repeat: no-repeat;\n"
+"}")
+        self.butto.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(".\\../GUI desgin/GUI desgin/setting/icons/Vector.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.butto.setIcon(icon)
+        self.butto.setIconSize(QtCore.QSize(50, 50))
+        self.butto.setObjectName("butto")
+        self.pushButton_25 = QtWidgets.QPushButton(self.buttons_3)
+        self.pushButton_25.setGeometry(QtCore.QRect(0, 100, 91, 61))
+        self.pushButton_25.setStyleSheet("QPushButton{\n"
+"background-image:url(:/icons/icons/Group 1.png);\n"
+" background-position: center;\n"
+"background-size: 50px;\n"
+" background-repeat: no-repeat;\n"
+"}")
+        self.pushButton_25.setText("")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(".\\../GUI desgin/GUI desgin/setting/icons/Group 1.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_25.setIcon(icon1)
+        self.pushButton_25.setIconSize(QtCore.QSize(50, 50))
+        self.pushButton_25.setObjectName("pushButton_25")
+        self.pushButton_26 = QtWidgets.QPushButton(self.buttons_3)
+        self.pushButton_26.setGeometry(QtCore.QRect(0, 590, 81, 61))
+        self.pushButton_26.setStyleSheet("QPushButton{\n"
+"background-image:url(:/icons/icons/Sign-out.png);\n"
+" background-position: center;\n"
+"background-size: 50px;\n"
+" background-repeat: no-repeat;\n"
+"}")
+        self.pushButton_26.setText("")
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(".\\../GUI desgin/GUI desgin/setting/icons/Sign-out.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_26.setIcon(icon2)
+        self.pushButton_26.setIconSize(QtCore.QSize(50, 50))
+        self.pushButton_26.setObjectName("pushButton_26")
+        self.line = QtWidgets.QFrame(self.buttons_3)
+        self.line.setGeometry(QtCore.QRect(80, 20, 20, 641))
+        self.line.setFrameShape(QtWidgets.QFrame.VLine)
+        self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line.setObjectName("line")
+        self.pushButton_36 = QtWidgets.QPushButton(self.buttons_3)
+        self.pushButton_36.setGeometry(QtCore.QRect(0, 170, 91, 61))
+        self.pushButton_36.setStyleSheet("QPushButton{\n"
+"background-image: url(:/icons/icons/settings.png);\n"
+" background-position: center;\n"
+"background-size: 50px;\n"
+" background-repeat: no-repeat;\n"
+"}")
+        self.pushButton_36.setText("")
+        self.pushButton_36.setIcon(icon1)
+        self.pushButton_36.setIconSize(QtCore.QSize(50, 50))
+        self.pushButton_36.setObjectName("pushButton_36")
+        self.pushButton_36.raise_()
+        self.butto.raise_()
+        self.pushButton_25.raise_()
+        self.pushButton_26.raise_()
+        self.line.raise_()
+        self.persons_3 = QtWidgets.QWidget(self.message_page)
+        self.persons_3.setGeometry(QtCore.QRect(90, 0, 251, 651))
+        self.persons_3.setStyleSheet("background-color: rgb(30, 30, 30);")
+        self.persons_3.setObjectName("persons_3")
+        self.label_45 = QtWidgets.QLabel(self.persons_3)
+        self.label_45.setGeometry(QtCore.QRect(30, 20, 161, 41))
+        self.label_45.setStyleSheet("color: rgb(255, 255, 255);\n"
+"font: 75 28pt \"MS Shell Dlg 2\";")
+        self.label_45.setObjectName("label_45")
+        self.scrollArea_3 = QtWidgets.QScrollArea(self.persons_3)
+        self.scrollArea_3.setGeometry(QtCore.QRect(0, 80, 241, 571))
+        self.scrollArea_3.setStyleSheet("QScrollArea{\n"
+"    border: none;\n"
+"}")
+        self.scrollArea_3.setWidgetResizable(True)
+        self.scrollArea_3.setObjectName("scrollArea_3")
+        self.scrollAreaWidgetContents_3 = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 241, 571))
+        self.scrollAreaWidgetContents_3.setObjectName("scrollAreaWidgetContents_3")
+        self.room = QtWidgets.QWidget(self.scrollAreaWidgetContents_3)
+        self.room.setGeometry(QtCore.QRect(0, 0, 241, 71))
+        self.room.setObjectName("room")
+        self.avatar = QtWidgets.QWidget(self.room)
+        self.avatar.setGeometry(QtCore.QRect(0, 0, 81, 71))
+        self.avatar.setStyleSheet("QWidget{\n"
+"background-image:url(:/images/images/User_cicrle_duotone 72x72.png);\n"
+" background-position: center;\n"
+"background-size: 50px;\n"
+" background-repeat: no-repeat;\n"
+"}")
+        self.avatar.setObjectName("avatar")
+        self.label = QtWidgets.QLabel(self.room)
+        self.label.setGeometry(QtCore.QRect(90, 10, 47, 13))
+        self.label.setStyleSheet("QLabel{\n"
+"color: white;\n"
+"font-weight: 500\n"
+"}")
         self.label.setObjectName("label")
+        self.label_2 = QtWidgets.QLabel(self.room)
+        self.label_2.setGeometry(QtCore.QRect(90, 40, 47, 13))
+        self.label_2.setStyleSheet("QLabel{\n"
+"color: white;\n"
+"}")
+        self.label_2.setObjectName("label_2")
+        self.label_3 = QtWidgets.QLabel(self.room)
+        self.label_3.setGeometry(QtCore.QRect(210, 30, 31, 16))
+        self.label_3.setStyleSheet("QLabel{\n"
+"color: white;\n"
+"}")
+        self.label_3.setObjectName("label_3")
+        self.scrollArea_3.setWidget(self.scrollAreaWidgetContents_3)
+        self.line_2 = QtWidgets.QFrame(self.persons_3)
+        self.line_2.setGeometry(QtCore.QRect(0, 60, 251, 20))
+        self.line_2.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_2.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_2.setObjectName("line_2")
+        self.line_3 = QtWidgets.QFrame(self.persons_3)
+        self.line_3.setGeometry(QtCore.QRect(240, 20, 20, 641))
+        self.line_3.setFrameShape(QtWidgets.QFrame.VLine)
+        self.line_3.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_3.setObjectName("line_3")
+        self.widget_12 = QtWidgets.QWidget(self.message_page)
+        self.widget_12.setGeometry(QtCore.QRect(340, -10, 521, 651))
+        self.widget_12.setObjectName("widget_12")
+        self.no_rooms_label = QtWidgets.QLabel(self.widget_12)
+        self.no_rooms_label.setGeometry(QtCore.QRect(30, 300, 461, 41))
+        self.no_rooms_label.setStyleSheet("color: rgb(255, 255, 255);\n"
+"font: 75 24pt \"MS Shell Dlg 2\";")
+        self.no_rooms_label.setObjectName("no_rooms_label")
+        self.messages_scrollarea = QtWidgets.QScrollArea(self.widget_12)
+        self.messages_scrollarea.setGeometry(QtCore.QRect(-1, 80, 511, 531))
+        self.messages_scrollarea.setWidgetResizable(True)
+        self.messages_scrollarea.setObjectName("messages_scrollarea")
+        self.messages_scrollarea_contents = QtWidgets.QWidget()
+        self.messages_scrollarea_contents.setGeometry(QtCore.QRect(0, 0, 509, 529))
+        self.messages_scrollarea_contents.setObjectName("messages_scrollarea_contents")
+        self.receiver_message = QtWidgets.QWidget(self.messages_scrollarea_contents)
+        self.receiver_message.setGeometry(QtCore.QRect(320, 50, 171, 41))
+        self.receiver_message.setStyleSheet("QWidget{\n"
+"background-color: #BB86FC;\n"
+"border-radius: 8px\n"
+"}")
+        self.receiver_message.setObjectName("receiver_message")
+        self.receiver_message_content = QtWidgets.QLabel(self.receiver_message)
+        self.receiver_message_content.setGeometry(QtCore.QRect(-10, 10, 171, 20))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(62)
+        font.setStrikeOut(False)
+        self.receiver_message_content.setFont(font)
+        self.receiver_message_content.setStyleSheet("QLabel{\n"
+"color: #E0E0E0;\n"
+"font-weight: 500;\n"
+"}")
+        self.receiver_message_content.setObjectName("receiver_message_content")
+        self.receiver_message_date = QtWidgets.QLabel(self.receiver_message)
+        self.receiver_message_date.setGeometry(QtCore.QRect(140, 30, 47, 13))
+        font = QtGui.QFont()
+        font.setPointSize(5)
+        self.receiver_message_date.setFont(font)
+        self.receiver_message_date.setStyleSheet("color: white")
+        self.receiver_message_date.setObjectName("receiver_message_date")
+        self.sender_message = QtWidgets.QWidget(self.messages_scrollarea_contents)
+        self.sender_message.setGeometry(QtCore.QRect(10, 110, 91, 41))
+        self.sender_message.setStyleSheet("QWidget{\n"
+"background-color: rgb(30, 30, 30);\n"
+"border-radius: 8px\n"
+"}")
+        self.sender_message.setObjectName("sender_message")
+        self.sender_message_content = QtWidgets.QLabel(self.sender_message)
+        self.sender_message_content.setGeometry(QtCore.QRect(0, 10, 51, 20))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(62)
+        font.setStrikeOut(False)
+        self.sender_message_content.setFont(font)
+        self.sender_message_content.setStyleSheet("QLabel{\n"
+"color: #E0E0E0;\n"
+"font-weight: 500;\n"
+"}")
+        self.sender_message_content.setObjectName("sender_message_content")
+        self.sender_message_date = QtWidgets.QLabel(self.sender_message)
+        self.sender_message_date.setGeometry(QtCore.QRect(40, 30, 47, 13))
+        font = QtGui.QFont()
+        font.setPointSize(5)
+        self.sender_message_date.setFont(font)
+        self.sender_message_date.setStyleSheet("color: white")
+        self.sender_message_date.setObjectName("sender_message_date")
+        self.messages_scrollarea.setWidget(self.messages_scrollarea_contents)
+        self.widget = QtWidgets.QWidget(self.widget_12)
+        self.widget.setGeometry(QtCore.QRect(-1, 20, 531, 641))
+        self.widget.setObjectName("widget")
+        self.widget_2 = QtWidgets.QWidget(self.widget)
+        self.widget_2.setGeometry(QtCore.QRect(-1, 0, 541, 61))
+        self.widget_2.setStyleSheet("background-color: rgb(30, 30, 30);")
+        self.widget_2.setObjectName("widget_2")
+        self.sender_container_room = QtWidgets.QWidget(self.widget_2)
+        self.sender_container_room.setGeometry(QtCore.QRect(-1, 10, 261, 51))
+        self.sender_container_room.setObjectName("sender_container_room")
+        self.sender_avatar_room = QtWidgets.QWidget(self.sender_container_room)
+        self.sender_avatar_room.setGeometry(QtCore.QRect(10, 0, 71, 41))
+        self.sender_avatar_room.setStyleSheet("QWidget{\n"
+"background-image:url(:/images/images/User_cicrle_duotone 48x48.png);\n"
+" background-position: center;\n"
+"background-size: 50px;\n"
+" background-repeat: no-repeat;\n"
+"}")
+        self.sender_avatar_room.setObjectName("sender_avatar_room")
+        self.sender_avatar_name = QtWidgets.QLabel(self.sender_container_room)
+        self.sender_avatar_name.setGeometry(QtCore.QRect(80, 0, 121, 16))
+        self.sender_avatar_name.setStyleSheet("QLabel{\n"
+"color: white;\n"
+"font-weight: 500\n"
+"}")
+        self.sender_avatar_name.setObjectName("sender_avatar_name")
+        self.sender_avatar_status = QtWidgets.QLabel(self.sender_container_room)
+        self.sender_avatar_status.setGeometry(QtCore.QRect(80, 20, 47, 13))
+        self.sender_avatar_status.setStyleSheet("QLabel{\n"
+"color: white;\n"
+"}")
+        self.sender_avatar_status.setObjectName("sender_avatar_status")
+        self.widget.raise_()
+        self.no_rooms_label.raise_()
+        self.messages_scrollarea.raise_()
+        self.widget_3 = QtWidgets.QWidget(self.message_page)
+        self.widget_3.setGeometry(QtCore.QRect(340, 600, 521, 51))
+        self.widget_3.setStyleSheet("background-color: rgb(30, 30, 30);")
+        self.widget_3.setObjectName("widget_3")
+        self.sned_textinput = QtWidgets.QLineEdit(self.widget_3)
+        self.sned_textinput.setGeometry(QtCore.QRect(0, 0, 441, 51))
+        self.sned_textinput.setObjectName("sned_textinput")
+        self.send_message_button = QtWidgets.QWidget(self.widget_3)
+        self.send_message_button.setGeometry(QtCore.QRect(449, 0, 61, 51))
+        self.send_message_button.setStyleSheet("QWidget{\n"
+"background-image:url(:/icons/icons/Send_hor 48x48.png);\n"
+" background-position: center;\n"
+"background-size: 50px;\n"
+" background-repeat: no-repeat;\n"
+"border: none;\n"
+"}")
+        self.send_message_button.setObjectName("send_message_button")
+        self.stackedWidget_2.addWidget(self.message_page)
+        self.settings_page = QtWidgets.QWidget()
+        self.settings_page.setObjectName("settings_page")
+        self.widget_5 = QtWidgets.QWidget(self.settings_page)
+        self.widget_5.setGeometry(QtCore.QRect(0, 10, 71, 661))
+        self.widget_5.setStyleSheet("background-color: rgb(30, 30, 30);")
+        self.widget_5.setObjectName("widget_5")
+        self.pushButton_45 = QtWidgets.QPushButton(self.widget_5)
+        self.pushButton_45.setGeometry(QtCore.QRect(-10, 10, 91, 61))
+        self.pushButton_45.setText("")
+        self.pushButton_45.setIcon(icon)
+        self.pushButton_45.setIconSize(QtCore.QSize(50, 50))
+        self.pushButton_45.setObjectName("pushButton_45")
+        self.pushButton_46 = QtWidgets.QPushButton(self.widget_5)
+        self.pushButton_46.setGeometry(QtCore.QRect(0, 70, 81, 61))
+        self.pushButton_46.setText("")
+        self.pushButton_46.setIcon(icon1)
+        self.pushButton_46.setIconSize(QtCore.QSize(50, 50))
+        self.pushButton_46.setObjectName("pushButton_46")
+        self.pushButton_47 = QtWidgets.QPushButton(self.widget_5)
+        self.pushButton_47.setGeometry(QtCore.QRect(-10, 570, 81, 61))
+        self.pushButton_47.setText("")
+        self.pushButton_47.setIcon(icon2)
+        self.pushButton_47.setIconSize(QtCore.QSize(50, 50))
+        self.pushButton_47.setObjectName("pushButton_47")
+        self.widget_6 = QtWidgets.QWidget(self.settings_page)
+        self.widget_6.setGeometry(QtCore.QRect(80, 20, 801, 651))
+        self.widget_6.setObjectName("widget_6")
+        self.label_19 = QtWidgets.QLabel(self.widget_6)
+        self.label_19.setGeometry(QtCore.QRect(150, 200, 451, 201))
+        self.label_19.setStyleSheet("color: rgb(255, 255, 255);\n"
+"font: 75 48pt \"MS Shell Dlg 2\";")
+        self.label_19.setObjectName("label_19")
+        self.stackedWidget_2.addWidget(self.settings_page)
+        self.null_page = QtWidgets.QWidget()
+        self.null_page.setObjectName("null_page")
+        self.stackedWidget_2.addWidget(self.null_page)
         MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
-        self.menubar.setObjectName("menubar")
-        MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
-        self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
+        self.stackedWidget_2.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label.setText(_translate("MainWindow", "Hello World"))
+        self.signup_button.setText(_translate("MainWindow", "Sign Up"))
+        self.login_button.setText(_translate("MainWindow", "Log In"))
+        self.label_33.setText(_translate("MainWindow", "Sign In"))
+        self.label_34.setText(_translate("MainWindow", "User Name"))
+        self.label_35.setText(_translate("MainWindow", "Password"))
+        self.label_36.setText(_translate("MainWindow", "Don\'t have an account"))
+        self.pushButton_21.setText(_translate("MainWindow", "Sign Up"))
+        self.pushButton_22.setText(_translate("MainWindow", "Log In"))
+        self.label_37.setText(_translate("MainWindow", "Sign Up"))
+        self.label_38.setText(_translate("MainWindow", "User Name"))
+        self.label_39.setText(_translate("MainWindow", "Password"))
+        self.label_40.setText(_translate("MainWindow", "Don\'t have an account"))
+        self.label_41.setText(_translate("MainWindow", "Sign Up"))
+        self.label_42.setText(_translate("MainWindow", "User Name"))
+        self.label_43.setText(_translate("MainWindow", "Password"))
+        self.label_44.setText(_translate("MainWindow", " Name"))
+        self.signup_button_2.setText(_translate("MainWindow", "Sign Up"))
+        self.label_45.setText(_translate("MainWindow", "Messages"))
+        self.label.setText(_translate("MainWindow", "Name"))
+        self.label_2.setText(_translate("MainWindow", "username"))
+        self.label_3.setText(_translate("MainWindow", "date"))
+        self.no_rooms_label.setText(_translate("MainWindow", "Select a chat to start Messaging"))
+        self.receiver_message_content.setText(_translate("MainWindow", "هنكمل شغل واله ايه"))
+        self.receiver_message_date.setText(_translate("MainWindow", "9:28 AM"))
+        self.sender_message_content.setText(_translate("MainWindow", "ماشي"))
+        self.sender_message_date.setText(_translate("MainWindow", "9:28 AM"))
+        self.sender_avatar_name.setText(_translate("MainWindow", "Name"))
+        self.sender_avatar_status.setText(_translate("MainWindow", "status"))
+        self.label_19.setText(_translate("MainWindow", "COMING SOON"))
+
