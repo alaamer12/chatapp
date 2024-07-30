@@ -9,13 +9,13 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-import assets.assets as assets_rc
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setEnabled(True)
-        MainWindow.resize(842, 641)
+        MainWindow.resize(860, 646)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -45,9 +45,9 @@ class Ui_MainWindow(object):
 "  horizontal_bottom->setContentsMargins(0,0,0,0);\n"
 "  widget->setLayout(horizontal_bottom);")
         self.centralwidget.setObjectName("centralwidget")
-        self.stackedWidget_2 = QtWidgets.QStackedWidget(self.centralwidget)
-        self.stackedWidget_2.setGeometry(QtCore.QRect(0, -10, 851, 651))
-        self.stackedWidget_2.setStyleSheet("QWidget *widget= new QWidget(this);\n"
+        self.pages_stack = QtWidgets.QStackedWidget(self.centralwidget)
+        self.pages_stack.setGeometry(QtCore.QRect(0, -10, 851, 651))
+        self.pages_stack.setStyleSheet("QWidget *widget= new QWidget(this);\n"
 "QPushButton *btn1 = new QPushButton();\n"
 "QPushButton *btn2 = new QPushButton();\n"
 "QPushButton *btn3 = new QPushButton();\n"
@@ -59,7 +59,7 @@ class Ui_MainWindow(object):
 "  horizontal_bottom->addWidget(btn3);\n"
 "  horizontal_bottom->setContentsMargins(0,0,0,0);\n"
 "  widget->setLayout(horizontal_bottom);")
-        self.stackedWidget_2.setObjectName("stackedWidget_2")
+        self.pages_stack.setObjectName("pages_stack")
         self.singin_page = QtWidgets.QWidget()
         self.singin_page.setBaseSize(QtCore.QSize(0, 0))
         self.singin_page.setObjectName("singin_page")
@@ -97,7 +97,7 @@ class Ui_MainWindow(object):
 "}")
         self.signup_button.setObjectName("signup_button")
         self.login_button = QtWidgets.QPushButton(self.widget_9)
-        self.login_button.setGeometry(QtCore.QRect(350, 490, 141, 51))
+        self.login_button.setGeometry(QtCore.QRect(350, 500, 141, 51))
         self.login_button.setAutoFillBackground(False)
         self.login_button.setStyleSheet("QPushButton {\n"
 "    color: rgb(255, 255, 255);\n"
@@ -157,10 +157,19 @@ class Ui_MainWindow(object):
         self.label_36.setStyleSheet("background-color: rgb(18, 18, 18);\n"
 "color: rgb(255, 53, 97);")
         self.label_36.setObjectName("label_36")
-        self.stackedWidget_2.addWidget(self.singin_page)
-        self.signup_page = QtWidgets.QWidget()
-        self.signup_page.setObjectName("signup_page")
-        self.widget_10 = QtWidgets.QWidget(self.signup_page)
+        self.invalid_signin_label = QtWidgets.QLabel(self.widget_9)
+        self.invalid_signin_label.setGeometry(QtCore.QRect(270, 460, 181, 31))
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        font.setBold(True)
+        font.setWeight(75)
+        self.invalid_signin_label.setFont(font)
+        self.invalid_signin_label.setStyleSheet("color: red;")
+        self.invalid_signin_label.setObjectName("invalid_signin_label")
+        self.pages_stack.addWidget(self.singin_page)
+        self.registration_page = QtWidgets.QWidget()
+        self.registration_page.setObjectName("registration_page")
+        self.widget_10 = QtWidgets.QWidget(self.registration_page)
         self.widget_10.setGeometry(QtCore.QRect(0, -10, 854, 651))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
@@ -332,9 +341,9 @@ class Ui_MainWindow(object):
         self.label_44.setFont(font)
         self.label_44.setStyleSheet("color: rgb(255, 255, 255);")
         self.label_44.setObjectName("label_44")
-        self.signup_button_2 = QtWidgets.QPushButton(self.widget_11)
-        self.signup_button_2.setGeometry(QtCore.QRect(350, 570, 141, 51))
-        self.signup_button_2.setStyleSheet("QPushButton {\n"
+        self.registration_button = QtWidgets.QPushButton(self.widget_11)
+        self.registration_button.setGeometry(QtCore.QRect(350, 570, 141, 51))
+        self.registration_button.setStyleSheet("QPushButton {\n"
 "    color: rgb(255, 255, 255);\n"
 "    font: 75 16pt \"MS Shell Dlg 2\";\n"
 "    border: 2px solid #cccccc;\n"
@@ -345,79 +354,88 @@ class Ui_MainWindow(object):
 "QPushButton:hover {\n"
 "    background-color:   ;\n"
 "}")
-        self.signup_button_2.setObjectName("signup_button_2")
-        self.stackedWidget_2.addWidget(self.signup_page)
-        self.message_page = QtWidgets.QWidget()
-        self.message_page.setObjectName("message_page")
-        self.buttons_3 = QtWidgets.QWidget(self.message_page)
+        self.registration_button.setObjectName("registration_button")
+        self.invalid_username_label = QtWidgets.QLabel(self.widget_11)
+        self.invalid_username_label.setGeometry(QtCore.QRect(500, 330, 181, 31))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.invalid_username_label.setFont(font)
+        self.invalid_username_label.setStyleSheet("color: red;")
+        self.invalid_username_label.setObjectName("invalid_username_label")
+        self.pages_stack.addWidget(self.registration_page)
+        self.chatting_page = QtWidgets.QWidget()
+        self.chatting_page.setObjectName("chatting_page")
+        self.buttons_3 = QtWidgets.QWidget(self.chatting_page)
         self.buttons_3.setGeometry(QtCore.QRect(0, -10, 91, 691))
         self.buttons_3.setStyleSheet("background-color: rgb(30, 30, 30);")
         self.buttons_3.setObjectName("buttons_3")
-        self.butto = QtWidgets.QPushButton(self.buttons_3)
-        self.butto.setGeometry(QtCore.QRect(0, 30, 91, 61))
-        self.butto.setStyleSheet("QPushButton{\n"
+        self.chatting_chatting_button = QtWidgets.QPushButton(self.buttons_3)
+        self.chatting_chatting_button.setGeometry(QtCore.QRect(0, 30, 91, 61))
+        self.chatting_chatting_button.setStyleSheet("QPushButton{\n"
 "background-image:url(:/icons/icons/Vector.png);\n"
 " background-position: center;\n"
 "background-size: 50px;\n"
 " background-repeat: no-repeat;\n"
 "}")
-        self.butto.setText("")
+        self.chatting_chatting_button.setText("")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(".\\../GUI desgin/GUI desgin/setting/icons/Vector.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.butto.setIcon(icon)
-        self.butto.setIconSize(QtCore.QSize(50, 50))
-        self.butto.setObjectName("butto")
-        self.pushButton_25 = QtWidgets.QPushButton(self.buttons_3)
-        self.pushButton_25.setGeometry(QtCore.QRect(0, 100, 91, 61))
-        self.pushButton_25.setStyleSheet("QPushButton{\n"
+        self.chatting_chatting_button.setIcon(icon)
+        self.chatting_chatting_button.setIconSize(QtCore.QSize(50, 50))
+        self.chatting_chatting_button.setObjectName("chatting_chatting_button")
+        self.chatting_requests_button = QtWidgets.QPushButton(self.buttons_3)
+        self.chatting_requests_button.setGeometry(QtCore.QRect(0, 100, 91, 61))
+        self.chatting_requests_button.setStyleSheet("QPushButton{\n"
 "background-image:url(:/icons/icons/Group 1.png);\n"
 " background-position: center;\n"
 "background-size: 50px;\n"
 " background-repeat: no-repeat;\n"
 "}")
-        self.pushButton_25.setText("")
+        self.chatting_requests_button.setText("")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap(".\\../GUI desgin/GUI desgin/setting/icons/Group 1.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_25.setIcon(icon1)
-        self.pushButton_25.setIconSize(QtCore.QSize(50, 50))
-        self.pushButton_25.setObjectName("pushButton_25")
-        self.pushButton_26 = QtWidgets.QPushButton(self.buttons_3)
-        self.pushButton_26.setGeometry(QtCore.QRect(0, 590, 81, 61))
-        self.pushButton_26.setStyleSheet("QPushButton{\n"
+        self.chatting_requests_button.setIcon(icon1)
+        self.chatting_requests_button.setIconSize(QtCore.QSize(50, 50))
+        self.chatting_requests_button.setObjectName("chatting_requests_button")
+        self.chatting_exit_button = QtWidgets.QPushButton(self.buttons_3)
+        self.chatting_exit_button.setGeometry(QtCore.QRect(0, 590, 81, 61))
+        self.chatting_exit_button.setStyleSheet("QPushButton{\n"
 "background-image:url(:/icons/icons/Sign-out.png);\n"
 " background-position: center;\n"
 "background-size: 50px;\n"
 " background-repeat: no-repeat;\n"
 "}")
-        self.pushButton_26.setText("")
+        self.chatting_exit_button.setText("")
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap(".\\../GUI desgin/GUI desgin/setting/icons/Sign-out.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_26.setIcon(icon2)
-        self.pushButton_26.setIconSize(QtCore.QSize(50, 50))
-        self.pushButton_26.setObjectName("pushButton_26")
+        self.chatting_exit_button.setIcon(icon2)
+        self.chatting_exit_button.setIconSize(QtCore.QSize(50, 50))
+        self.chatting_exit_button.setObjectName("chatting_exit_button")
         self.line = QtWidgets.QFrame(self.buttons_3)
         self.line.setGeometry(QtCore.QRect(80, 20, 20, 641))
         self.line.setFrameShape(QtWidgets.QFrame.VLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
-        self.pushButton_36 = QtWidgets.QPushButton(self.buttons_3)
-        self.pushButton_36.setGeometry(QtCore.QRect(0, 170, 91, 61))
-        self.pushButton_36.setStyleSheet("QPushButton{\n"
+        self.chatting_settings_button = QtWidgets.QPushButton(self.buttons_3)
+        self.chatting_settings_button.setGeometry(QtCore.QRect(0, 170, 91, 61))
+        self.chatting_settings_button.setStyleSheet("QPushButton{\n"
 "background-image: url(:/icons/icons/settings.png);\n"
 " background-position: center;\n"
 "background-size: 50px;\n"
 " background-repeat: no-repeat;\n"
 "}")
-        self.pushButton_36.setText("")
-        self.pushButton_36.setIcon(icon1)
-        self.pushButton_36.setIconSize(QtCore.QSize(50, 50))
-        self.pushButton_36.setObjectName("pushButton_36")
-        self.pushButton_36.raise_()
-        self.butto.raise_()
-        self.pushButton_25.raise_()
-        self.pushButton_26.raise_()
+        self.chatting_settings_button.setText("")
+        self.chatting_settings_button.setIcon(icon1)
+        self.chatting_settings_button.setIconSize(QtCore.QSize(50, 50))
+        self.chatting_settings_button.setObjectName("chatting_settings_button")
+        self.chatting_settings_button.raise_()
+        self.chatting_chatting_button.raise_()
+        self.chatting_requests_button.raise_()
+        self.chatting_exit_button.raise_()
         self.line.raise_()
-        self.persons_3 = QtWidgets.QWidget(self.message_page)
+        self.persons_3 = QtWidgets.QWidget(self.chatting_page)
         self.persons_3.setGeometry(QtCore.QRect(90, 0, 251, 651))
         self.persons_3.setStyleSheet("background-color: rgb(30, 30, 30);")
         self.persons_3.setObjectName("persons_3")
@@ -448,25 +466,19 @@ class Ui_MainWindow(object):
 " background-repeat: no-repeat;\n"
 "}")
         self.avatar.setObjectName("avatar")
-        self.label = QtWidgets.QLabel(self.room)
-        self.label.setGeometry(QtCore.QRect(90, 10, 47, 13))
-        self.label.setStyleSheet("QLabel{\n"
+        self.room_name_label = QtWidgets.QLabel(self.room)
+        self.room_name_label.setGeometry(QtCore.QRect(90, 10, 47, 13))
+        self.room_name_label.setStyleSheet("QLabel{\n"
 "color: white;\n"
 "font-weight: 500\n"
 "}")
-        self.label.setObjectName("label")
-        self.label_2 = QtWidgets.QLabel(self.room)
-        self.label_2.setGeometry(QtCore.QRect(90, 40, 47, 13))
-        self.label_2.setStyleSheet("QLabel{\n"
+        self.room_name_label.setObjectName("room_name_label")
+        self.room_username_label = QtWidgets.QLabel(self.room)
+        self.room_username_label.setGeometry(QtCore.QRect(90, 40, 47, 13))
+        self.room_username_label.setStyleSheet("QLabel{\n"
 "color: white;\n"
 "}")
-        self.label_2.setObjectName("label_2")
-        self.label_3 = QtWidgets.QLabel(self.room)
-        self.label_3.setGeometry(QtCore.QRect(210, 30, 31, 16))
-        self.label_3.setStyleSheet("QLabel{\n"
-"color: white;\n"
-"}")
-        self.label_3.setObjectName("label_3")
+        self.room_username_label.setObjectName("room_username_label")
         self.scrollArea_3.setWidget(self.scrollAreaWidgetContents_3)
         self.line_2 = QtWidgets.QFrame(self.persons_3)
         self.line_2.setGeometry(QtCore.QRect(0, 60, 251, 20))
@@ -478,7 +490,7 @@ class Ui_MainWindow(object):
         self.line_3.setFrameShape(QtWidgets.QFrame.VLine)
         self.line_3.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_3.setObjectName("line_3")
-        self.widget_12 = QtWidgets.QWidget(self.message_page)
+        self.widget_12 = QtWidgets.QWidget(self.chatting_page)
         self.widget_12.setGeometry(QtCore.QRect(340, -10, 521, 651))
         self.widget_12.setObjectName("widget_12")
         self.no_rooms_label = QtWidgets.QLabel(self.widget_12)
@@ -555,35 +567,35 @@ class Ui_MainWindow(object):
         self.widget_2.setGeometry(QtCore.QRect(-1, 0, 541, 61))
         self.widget_2.setStyleSheet("background-color: rgb(30, 30, 30);")
         self.widget_2.setObjectName("widget_2")
-        self.sender_container_room = QtWidgets.QWidget(self.widget_2)
-        self.sender_container_room.setGeometry(QtCore.QRect(-1, 10, 261, 51))
-        self.sender_container_room.setObjectName("sender_container_room")
-        self.sender_avatar_room = QtWidgets.QWidget(self.sender_container_room)
-        self.sender_avatar_room.setGeometry(QtCore.QRect(10, 0, 71, 41))
-        self.sender_avatar_room.setStyleSheet("QWidget{\n"
+        self.message_box = QtWidgets.QWidget(self.widget_2)
+        self.message_box.setGeometry(QtCore.QRect(-1, 10, 261, 51))
+        self.message_box.setObjectName("message_box")
+        self.message_box_avatar = QtWidgets.QWidget(self.message_box)
+        self.message_box_avatar.setGeometry(QtCore.QRect(10, 0, 71, 41))
+        self.message_box_avatar.setStyleSheet("QWidget{\n"
 "background-image:url(:/images/images/User_cicrle_duotone 48x48.png);\n"
 " background-position: center;\n"
 "background-size: 50px;\n"
 " background-repeat: no-repeat;\n"
 "}")
-        self.sender_avatar_room.setObjectName("sender_avatar_room")
-        self.sender_avatar_name = QtWidgets.QLabel(self.sender_container_room)
-        self.sender_avatar_name.setGeometry(QtCore.QRect(80, 0, 121, 16))
-        self.sender_avatar_name.setStyleSheet("QLabel{\n"
+        self.message_box_avatar.setObjectName("message_box_avatar")
+        self.message_box_name_label = QtWidgets.QLabel(self.message_box)
+        self.message_box_name_label.setGeometry(QtCore.QRect(80, 0, 121, 16))
+        self.message_box_name_label.setStyleSheet("QLabel{\n"
 "color: white;\n"
 "font-weight: 500\n"
 "}")
-        self.sender_avatar_name.setObjectName("sender_avatar_name")
-        self.sender_avatar_status = QtWidgets.QLabel(self.sender_container_room)
-        self.sender_avatar_status.setGeometry(QtCore.QRect(80, 20, 47, 13))
-        self.sender_avatar_status.setStyleSheet("QLabel{\n"
+        self.message_box_name_label.setObjectName("message_box_name_label")
+        self.message_box_status = QtWidgets.QLabel(self.message_box)
+        self.message_box_status.setGeometry(QtCore.QRect(80, 20, 47, 13))
+        self.message_box_status.setStyleSheet("QLabel{\n"
 "color: white;\n"
 "}")
-        self.sender_avatar_status.setObjectName("sender_avatar_status")
+        self.message_box_status.setObjectName("message_box_status")
         self.widget.raise_()
         self.no_rooms_label.raise_()
         self.messages_scrollarea.raise_()
-        self.widget_3 = QtWidgets.QWidget(self.message_page)
+        self.widget_3 = QtWidgets.QWidget(self.chatting_page)
         self.widget_3.setGeometry(QtCore.QRect(340, 600, 521, 51))
         self.widget_3.setStyleSheet("background-color: rgb(30, 30, 30);")
         self.widget_3.setObjectName("widget_3")
@@ -600,47 +612,200 @@ class Ui_MainWindow(object):
 "border: none;\n"
 "}")
         self.send_message_button.setObjectName("send_message_button")
-        self.stackedWidget_2.addWidget(self.message_page)
+        self.pages_stack.addWidget(self.chatting_page)
         self.settings_page = QtWidgets.QWidget()
         self.settings_page.setObjectName("settings_page")
-        self.widget_5 = QtWidgets.QWidget(self.settings_page)
-        self.widget_5.setGeometry(QtCore.QRect(0, 10, 71, 661))
-        self.widget_5.setStyleSheet("background-color: rgb(30, 30, 30);")
+        self.widget_4 = QtWidgets.QWidget(self.settings_page)
+        self.widget_4.setGeometry(QtCore.QRect(0, 10, 81, 651))
+        self.widget_4.setObjectName("widget_4")
+        self.buttons_5 = QtWidgets.QWidget(self.widget_4)
+        self.buttons_5.setGeometry(QtCore.QRect(-10, -10, 91, 691))
+        self.buttons_5.setStyleSheet("background-color: rgb(30, 30, 30);")
+        self.buttons_5.setObjectName("buttons_5")
+        self.settings_chatting_button = QtWidgets.QPushButton(self.buttons_5)
+        self.settings_chatting_button.setGeometry(QtCore.QRect(0, 30, 91, 61))
+        self.settings_chatting_button.setStyleSheet("QPushButton{\n"
+"background-image:url(:/icons/icons/Vector.png);\n"
+" background-position: center;\n"
+"background-size: 50px;\n"
+" background-repeat: no-repeat;\n"
+"}")
+        self.settings_chatting_button.setText("")
+        self.settings_chatting_button.setIcon(icon)
+        self.settings_chatting_button.setIconSize(QtCore.QSize(50, 50))
+        self.settings_chatting_button.setObjectName("settings_chatting_button")
+        self.settings_requests_button = QtWidgets.QPushButton(self.buttons_5)
+        self.settings_requests_button.setGeometry(QtCore.QRect(0, 100, 91, 61))
+        self.settings_requests_button.setStyleSheet("QPushButton{\n"
+"background-image:url(:/icons/icons/Group 1.png);\n"
+" background-position: center;\n"
+"background-size: 50px;\n"
+" background-repeat: no-repeat;\n"
+"}")
+        self.settings_requests_button.setText("")
+        self.settings_requests_button.setIcon(icon1)
+        self.settings_requests_button.setIconSize(QtCore.QSize(50, 50))
+        self.settings_requests_button.setObjectName("settings_requests_button")
+        self.settings_exit_button = QtWidgets.QPushButton(self.buttons_5)
+        self.settings_exit_button.setGeometry(QtCore.QRect(0, 590, 81, 61))
+        self.settings_exit_button.setStyleSheet("QPushButton{\n"
+"background-image:url(:/icons/icons/Sign-out.png);\n"
+" background-position: center;\n"
+"background-size: 50px;\n"
+" background-repeat: no-repeat;\n"
+"}")
+        self.settings_exit_button.setText("")
+        self.settings_exit_button.setIcon(icon2)
+        self.settings_exit_button.setIconSize(QtCore.QSize(50, 50))
+        self.settings_exit_button.setObjectName("settings_exit_button")
+        self.line_6 = QtWidgets.QFrame(self.buttons_5)
+        self.line_6.setGeometry(QtCore.QRect(80, 20, 20, 641))
+        self.line_6.setFrameShape(QtWidgets.QFrame.VLine)
+        self.line_6.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_6.setObjectName("line_6")
+        self.settings_settings_button = QtWidgets.QPushButton(self.buttons_5)
+        self.settings_settings_button.setGeometry(QtCore.QRect(0, 170, 91, 61))
+        self.settings_settings_button.setStyleSheet("QPushButton{\n"
+"background-image: url(:/icons/icons/settings.png);\n"
+" background-position: center;\n"
+"background-size: 50px;\n"
+" background-repeat: no-repeat;\n"
+"}")
+        self.settings_settings_button.setText("")
+        self.settings_settings_button.setIcon(icon1)
+        self.settings_settings_button.setIconSize(QtCore.QSize(50, 50))
+        self.settings_settings_button.setObjectName("settings_settings_button")
+        self.label = QtWidgets.QLabel(self.settings_page)
+        self.label.setGeometry(QtCore.QRect(280, 260, 351, 111))
+        font = QtGui.QFont()
+        font.setPointSize(40)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label.setFont(font)
+        self.label.setStyleSheet("color: white")
+        self.label.setObjectName("label")
+        self.pages_stack.addWidget(self.settings_page)
+        self.requests_page = QtWidgets.QWidget()
+        self.requests_page.setObjectName("requests_page")
+        self.widget_16 = QtWidgets.QWidget(self.requests_page)
+        self.widget_16.setGeometry(QtCore.QRect(340, 20, 521, 651))
+        self.widget_16.setObjectName("widget_16")
+        self.label_60 = QtWidgets.QLabel(self.widget_16)
+        self.label_60.setGeometry(QtCore.QRect(120, 70, 251, 41))
+        self.label_60.setStyleSheet("color: rgb(255, 255, 255);\n"
+"font: 75 24pt \"MS Shell Dlg 2\";")
+        self.label_60.setObjectName("label_60")
+        self.search_textinput = QtWidgets.QLineEdit(self.widget_16)
+        self.search_textinput.setGeometry(QtCore.QRect(10, 200, 321, 41))
+        self.search_textinput.setStatusTip("")
+        self.search_textinput.setStyleSheet("QLineEdit {\n"
+"    color: rgb(255, 255, 255);\n"
+"    border: 2px solid #cccccc; \n"
+"    border-radius: 10px;       \n"
+"    padding: 5px;            \n"
+"    background-color: #121212;  \n"
+"\n"
+"}\n"
+"")
+        self.search_textinput.setText("")
+        self.search_textinput.setObjectName("search_textinput")
+        self.search_button = QtWidgets.QPushButton(self.widget_16)
+        self.search_button.setGeometry(QtCore.QRect(360, 200, 121, 41))
+        self.search_button.setAutoFillBackground(False)
+        self.search_button.setStyleSheet("QPushButton {\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 75 16pt \"MS Shell Dlg 2\";\n"
+"    border: 2px solid #cccccc;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px;\n"
+"    background-color: #121212  ;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color:   ;\n"
+"}")
+        self.search_button.setObjectName("search_button")
+        self.persons_4 = QtWidgets.QWidget(self.requests_page)
+        self.persons_4.setGeometry(QtCore.QRect(90, 10, 251, 651))
+        self.persons_4.setStyleSheet("background-color: rgb(30, 30, 30);")
+        self.persons_4.setObjectName("persons_4")
+        self.label_59 = QtWidgets.QLabel(self.persons_4)
+        self.label_59.setGeometry(QtCore.QRect(0, 20, 241, 41))
+        self.label_59.setStyleSheet("color: rgb(255, 255, 255);\n"
+"font: 75 24pt \"MS Shell Dlg 2\";")
+        self.label_59.setObjectName("label_59")
+        self.scrollArea_4 = QtWidgets.QScrollArea(self.persons_4)
+        self.scrollArea_4.setGeometry(QtCore.QRect(0, 70, 251, 581))
+        self.scrollArea_4.setWidgetResizable(True)
+        self.scrollArea_4.setObjectName("scrollArea_4")
+        self.scrollAreaWidgetContents_4 = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents_4.setGeometry(QtCore.QRect(0, 0, 249, 579))
+        self.scrollAreaWidgetContents_4.setObjectName("scrollAreaWidgetContents_4")
+        self.scrollArea_4.setWidget(self.scrollAreaWidgetContents_4)
+        self.widget_5 = QtWidgets.QWidget(self.requests_page)
+        self.widget_5.setGeometry(QtCore.QRect(0, 10, 91, 651))
         self.widget_5.setObjectName("widget_5")
-        self.pushButton_45 = QtWidgets.QPushButton(self.widget_5)
-        self.pushButton_45.setGeometry(QtCore.QRect(-10, 10, 91, 61))
-        self.pushButton_45.setText("")
-        self.pushButton_45.setIcon(icon)
-        self.pushButton_45.setIconSize(QtCore.QSize(50, 50))
-        self.pushButton_45.setObjectName("pushButton_45")
-        self.pushButton_46 = QtWidgets.QPushButton(self.widget_5)
-        self.pushButton_46.setGeometry(QtCore.QRect(0, 70, 81, 61))
-        self.pushButton_46.setText("")
-        self.pushButton_46.setIcon(icon1)
-        self.pushButton_46.setIconSize(QtCore.QSize(50, 50))
-        self.pushButton_46.setObjectName("pushButton_46")
-        self.pushButton_47 = QtWidgets.QPushButton(self.widget_5)
-        self.pushButton_47.setGeometry(QtCore.QRect(-10, 570, 81, 61))
-        self.pushButton_47.setText("")
-        self.pushButton_47.setIcon(icon2)
-        self.pushButton_47.setIconSize(QtCore.QSize(50, 50))
-        self.pushButton_47.setObjectName("pushButton_47")
-        self.widget_6 = QtWidgets.QWidget(self.settings_page)
-        self.widget_6.setGeometry(QtCore.QRect(80, 20, 801, 651))
-        self.widget_6.setObjectName("widget_6")
-        self.label_19 = QtWidgets.QLabel(self.widget_6)
-        self.label_19.setGeometry(QtCore.QRect(150, 200, 451, 201))
-        self.label_19.setStyleSheet("color: rgb(255, 255, 255);\n"
-"font: 75 48pt \"MS Shell Dlg 2\";")
-        self.label_19.setObjectName("label_19")
-        self.stackedWidget_2.addWidget(self.settings_page)
-        self.null_page = QtWidgets.QWidget()
-        self.null_page.setObjectName("null_page")
-        self.stackedWidget_2.addWidget(self.null_page)
+        self.buttons_4 = QtWidgets.QWidget(self.widget_5)
+        self.buttons_4.setGeometry(QtCore.QRect(-10, 0, 91, 691))
+        self.buttons_4.setStyleSheet("background-color: rgb(30, 30, 30);")
+        self.buttons_4.setObjectName("buttons_4")
+        self.requests_chatting_button = QtWidgets.QPushButton(self.buttons_4)
+        self.requests_chatting_button.setGeometry(QtCore.QRect(0, 30, 91, 61))
+        self.requests_chatting_button.setStyleSheet("QPushButton{\n"
+"background-image:url(:/icons/icons/Vector.png);\n"
+" background-position: center;\n"
+"background-size: 50px;\n"
+" background-repeat: no-repeat;\n"
+"}")
+        self.requests_chatting_button.setText("")
+        self.requests_chatting_button.setIcon(icon)
+        self.requests_chatting_button.setIconSize(QtCore.QSize(50, 50))
+        self.requests_chatting_button.setObjectName("requests_chatting_button")
+        self.requests_requests_button = QtWidgets.QPushButton(self.buttons_4)
+        self.requests_requests_button.setGeometry(QtCore.QRect(0, 100, 91, 61))
+        self.requests_requests_button.setStyleSheet("QPushButton{\n"
+"background-image:url(:/icons/icons/Group 1.png);\n"
+" background-position: center;\n"
+"background-size: 50px;\n"
+" background-repeat: no-repeat;\n"
+"}")
+        self.requests_requests_button.setText("")
+        self.requests_requests_button.setIcon(icon1)
+        self.requests_requests_button.setIconSize(QtCore.QSize(50, 50))
+        self.requests_requests_button.setObjectName("requests_requests_button")
+        self.requests_exit_button = QtWidgets.QPushButton(self.buttons_4)
+        self.requests_exit_button.setGeometry(QtCore.QRect(0, 590, 81, 61))
+        self.requests_exit_button.setStyleSheet("QPushButton{\n"
+"background-image:url(:/icons/icons/Sign-out.png);\n"
+" background-position: center;\n"
+"background-size: 50px;\n"
+" background-repeat: no-repeat;\n"
+"}")
+        self.requests_exit_button.setText("")
+        self.requests_exit_button.setIcon(icon2)
+        self.requests_exit_button.setIconSize(QtCore.QSize(50, 50))
+        self.requests_exit_button.setObjectName("requests_exit_button")
+        self.line_7 = QtWidgets.QFrame(self.buttons_4)
+        self.line_7.setGeometry(QtCore.QRect(80, 20, 20, 641))
+        self.line_7.setFrameShape(QtWidgets.QFrame.VLine)
+        self.line_7.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_7.setObjectName("line_7")
+        self.requests_settings_button = QtWidgets.QPushButton(self.buttons_4)
+        self.requests_settings_button.setGeometry(QtCore.QRect(0, 170, 91, 61))
+        self.requests_settings_button.setStyleSheet("QPushButton{\n"
+"background-image: url(:/icons/icons/settings.png);\n"
+" background-position: center;\n"
+"background-size: 50px;\n"
+" background-repeat: no-repeat;\n"
+"}")
+        self.requests_settings_button.setText("")
+        self.requests_settings_button.setIcon(icon1)
+        self.requests_settings_button.setIconSize(QtCore.QSize(50, 50))
+        self.requests_settings_button.setObjectName("requests_settings_button")
+        self.pages_stack.addWidget(self.requests_page)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget_2.setCurrentIndex(2)
+        self.pages_stack.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -652,6 +817,7 @@ class Ui_MainWindow(object):
         self.label_34.setText(_translate("MainWindow", "User Name"))
         self.label_35.setText(_translate("MainWindow", "Password"))
         self.label_36.setText(_translate("MainWindow", "Don\'t have an account"))
+        self.invalid_signin_label.setText(_translate("MainWindow", "username or password is incorrect"))
         self.pushButton_21.setText(_translate("MainWindow", "Sign Up"))
         self.pushButton_22.setText(_translate("MainWindow", "Log In"))
         self.label_37.setText(_translate("MainWindow", "Sign Up"))
@@ -662,17 +828,20 @@ class Ui_MainWindow(object):
         self.label_42.setText(_translate("MainWindow", "User Name"))
         self.label_43.setText(_translate("MainWindow", "Password"))
         self.label_44.setText(_translate("MainWindow", " Name"))
-        self.signup_button_2.setText(_translate("MainWindow", "Sign Up"))
+        self.registration_button.setText(_translate("MainWindow", "Sign Up"))
+        self.invalid_username_label.setText(_translate("MainWindow", " Username Already Taken"))
         self.label_45.setText(_translate("MainWindow", "Messages"))
-        self.label.setText(_translate("MainWindow", "Name"))
-        self.label_2.setText(_translate("MainWindow", "username"))
-        self.label_3.setText(_translate("MainWindow", "date"))
+        self.room_name_label.setText(_translate("MainWindow", "Name"))
+        self.room_username_label.setText(_translate("MainWindow", "username"))
         self.no_rooms_label.setText(_translate("MainWindow", "Select a chat to start Messaging"))
         self.receiver_message_content.setText(_translate("MainWindow", "هنكمل شغل واله ايه"))
         self.receiver_message_date.setText(_translate("MainWindow", "9:28 AM"))
         self.sender_message_content.setText(_translate("MainWindow", "ماشي"))
         self.sender_message_date.setText(_translate("MainWindow", "9:28 AM"))
-        self.sender_avatar_name.setText(_translate("MainWindow", "Name"))
-        self.sender_avatar_status.setText(_translate("MainWindow", "status"))
-        self.label_19.setText(_translate("MainWindow", "COMING SOON"))
-
+        self.message_box_name_label.setText(_translate("MainWindow", "Name"))
+        self.message_box_status.setText(_translate("MainWindow", "status"))
+        self.label.setText(_translate("MainWindow", "Coming Soon"))
+        self.label_60.setText(_translate("MainWindow", "Find your friends"))
+        self.search_textinput.setPlaceholderText(_translate("MainWindow", "Enter user name"))
+        self.search_button.setText(_translate("MainWindow", "Send"))
+        self.label_59.setText(_translate("MainWindow", "Friend requests"))

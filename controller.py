@@ -9,9 +9,24 @@ class Controller:
         self.view: Optional[View] = None
         self.model = Model()
 
-    def main(self, app):
-        # ! You must initialize view with none at __init__ and use it at main function
-        # ! It leads to leak in memory which leads to crashing
+    def handle_signin_clicked(self, username: str, password: str):
+        success = self.model.check_login(username, password)
+        if success:
+            self.view.set_page(2)
+        else:
+            self.view.show_invalid_message("invalid_signin_label")
+
+    def handle_signup_clicked(self):
+        registration = self.view.Pages.REGISTRATION
+        self.view.set_page(registration)
+
+    def handle_registration(self, name, username, password):
+        success = self.model.set_newuser(name, username, password)
+        if success:
+            self.view.set_page(2)
+        else:
+            self.view.show_invalid_message("invalid_username_label")
+
+    def main(self, _app):
         self.view = View(self)
-        # self.model.main()
-        self.view.main(app)
+        self.view.main(_app)

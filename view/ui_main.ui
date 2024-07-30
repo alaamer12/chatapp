@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>842</width>
-    <height>641</height>
+    <width>860</width>
+    <height>646</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -59,7 +59,7 @@ QHBoxLayout *horizontal_bottom = new QHBoxLayout();
   horizontal_bottom-&gt;setContentsMargins(0,0,0,0);
   widget-&gt;setLayout(horizontal_bottom);</string>
    </property>
-   <widget class="QStackedWidget" name="stackedWidget_2">
+   <widget class="QStackedWidget" name="pages_stack">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -83,7 +83,7 @@ QHBoxLayout *horizontal_bottom = new QHBoxLayout();
   widget-&gt;setLayout(horizontal_bottom);</string>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="singin_page">
      <property name="baseSize">
@@ -159,7 +159,7 @@ QPushButton:hover {
        <property name="geometry">
         <rect>
          <x>350</x>
-         <y>490</y>
+         <y>500</y>
          <width>141</width>
          <height>51</height>
         </rect>
@@ -297,9 +297,32 @@ color: rgb(255, 53, 97);</string>
         <string>Don't have an account</string>
        </property>
       </widget>
+      <widget class="QLabel" name="invalid_signin_label">
+       <property name="geometry">
+        <rect>
+         <x>270</x>
+         <y>460</y>
+         <width>181</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>7</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: red;</string>
+       </property>
+       <property name="text">
+        <string>username or password is incorrect</string>
+       </property>
+      </widget>
      </widget>
     </widget>
-    <widget class="QWidget" name="signup_page">
+    <widget class="QWidget" name="registration_page">
      <widget class="QWidget" name="widget_10" native="true">
       <property name="geometry">
        <rect>
@@ -681,7 +704,7 @@ color: rgb(255, 53, 97);</string>
          <string> Name</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="signup_button_2">
+       <widget class="QPushButton" name="registration_button">
         <property name="geometry">
          <rect>
           <x>350</x>
@@ -707,10 +730,33 @@ QPushButton:hover {
          <string>Sign Up</string>
         </property>
        </widget>
+       <widget class="QLabel" name="invalid_username_label">
+        <property name="geometry">
+         <rect>
+          <x>500</x>
+          <y>330</y>
+          <width>181</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: red;</string>
+        </property>
+        <property name="text">
+         <string> Username Already Taken</string>
+        </property>
+       </widget>
       </widget>
      </widget>
     </widget>
-    <widget class="QWidget" name="message_page">
+    <widget class="QWidget" name="chatting_page">
      <widget class="QWidget" name="buttons_3" native="true">
       <property name="geometry">
        <rect>
@@ -723,7 +769,7 @@ QPushButton:hover {
       <property name="styleSheet">
        <string notr="true">background-color: rgb(30, 30, 30);</string>
       </property>
-      <widget class="QPushButton" name="butto">
+      <widget class="QPushButton" name="chatting_chatting_button">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -754,7 +800,7 @@ background-size: 50px;
         </size>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_25">
+      <widget class="QPushButton" name="chatting_requests_button">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -785,7 +831,7 @@ background-size: 50px;
         </size>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_26">
+      <widget class="QPushButton" name="chatting_exit_button">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -829,7 +875,7 @@ background-size: 50px;
         <enum>Qt::Vertical</enum>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_36">
+      <widget class="QPushButton" name="chatting_settings_button">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -860,10 +906,10 @@ background-size: 50px;
         </size>
        </property>
       </widget>
-      <zorder>pushButton_36</zorder>
-      <zorder>butto</zorder>
-      <zorder>pushButton_25</zorder>
-      <zorder>pushButton_26</zorder>
+      <zorder>chatting_settings_button</zorder>
+      <zorder>chatting_chatting_button</zorder>
+      <zorder>chatting_requests_button</zorder>
+      <zorder>chatting_exit_button</zorder>
       <zorder>line</zorder>
      </widget>
      <widget class="QWidget" name="persons_3" native="true">
@@ -948,7 +994,7 @@ background-size: 50px;
 }</string>
           </property>
          </widget>
-         <widget class="QLabel" name="label">
+         <widget class="QLabel" name="room_name_label">
           <property name="geometry">
            <rect>
             <x>90</x>
@@ -967,7 +1013,7 @@ font-weight: 500
            <string>Name</string>
           </property>
          </widget>
-         <widget class="QLabel" name="label_2">
+         <widget class="QLabel" name="room_username_label">
           <property name="geometry">
            <rect>
             <x>90</x>
@@ -983,24 +1029,6 @@ color: white;
           </property>
           <property name="text">
            <string>username</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_3">
-          <property name="geometry">
-           <rect>
-            <x>210</x>
-            <y>30</y>
-            <width>31</width>
-            <height>16</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel{
-color: white;
-}</string>
-          </property>
-          <property name="text">
-           <string>date</string>
           </property>
          </widget>
         </widget>
@@ -1231,7 +1259,7 @@ font-weight: 500;
         <property name="styleSheet">
          <string notr="true">background-color: rgb(30, 30, 30);</string>
         </property>
-        <widget class="QWidget" name="sender_container_room" native="true">
+        <widget class="QWidget" name="message_box" native="true">
          <property name="geometry">
           <rect>
            <x>-1</x>
@@ -1240,7 +1268,7 @@ font-weight: 500;
            <height>51</height>
           </rect>
          </property>
-         <widget class="QWidget" name="sender_avatar_room" native="true">
+         <widget class="QWidget" name="message_box_avatar" native="true">
           <property name="geometry">
            <rect>
             <x>10</x>
@@ -1258,7 +1286,7 @@ background-size: 50px;
 }</string>
           </property>
          </widget>
-         <widget class="QLabel" name="sender_avatar_name">
+         <widget class="QLabel" name="message_box_name_label">
           <property name="geometry">
            <rect>
             <x>80</x>
@@ -1277,7 +1305,7 @@ font-weight: 500
            <string>Name</string>
           </property>
          </widget>
-         <widget class="QLabel" name="sender_avatar_status">
+         <widget class="QLabel" name="message_box_status">
           <property name="geometry">
            <rect>
             <x>80</x>
@@ -1346,117 +1374,491 @@ border: none;
      </widget>
     </widget>
     <widget class="QWidget" name="settings_page">
-     <widget class="QWidget" name="widget_5" native="true">
+     <widget class="QWidget" name="widget_4" native="true">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>10</y>
-        <width>71</width>
-        <height>661</height>
+        <width>81</width>
+        <height>651</height>
+       </rect>
+      </property>
+      <widget class="QWidget" name="buttons_5" native="true">
+       <property name="geometry">
+        <rect>
+         <x>-10</x>
+         <y>-10</y>
+         <width>91</width>
+         <height>691</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(30, 30, 30);</string>
+       </property>
+       <widget class="QPushButton" name="settings_chatting_button">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>30</y>
+          <width>91</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+background-image:url(:/icons/icons/Vector.png);
+ background-position: center;
+background-size: 50px;
+ background-repeat: no-repeat;
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../GUI desgin/GUI desgin/setting/icons/Vector.png</normaloff>../GUI desgin/GUI desgin/setting/icons/Vector.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>50</width>
+          <height>50</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="settings_requests_button">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>100</y>
+          <width>91</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+background-image:url(:/icons/icons/Group 1.png);
+ background-position: center;
+background-size: 50px;
+ background-repeat: no-repeat;
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../GUI desgin/GUI desgin/setting/icons/Group 1.png</normaloff>../GUI desgin/GUI desgin/setting/icons/Group 1.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>50</width>
+          <height>50</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="settings_exit_button">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>590</y>
+          <width>81</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+background-image:url(:/icons/icons/Sign-out.png);
+ background-position: center;
+background-size: 50px;
+ background-repeat: no-repeat;
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../GUI desgin/GUI desgin/setting/icons/Sign-out.png</normaloff>../GUI desgin/GUI desgin/setting/icons/Sign-out.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>50</width>
+          <height>50</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="Line" name="line_6">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>20</y>
+          <width>20</width>
+          <height>641</height>
+         </rect>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="settings_settings_button">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>170</y>
+          <width>91</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+background-image: url(:/icons/icons/settings.png);
+ background-position: center;
+background-size: 50px;
+ background-repeat: no-repeat;
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../GUI desgin/GUI desgin/setting/icons/Group 1.png</normaloff>../GUI desgin/GUI desgin/setting/icons/Group 1.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>50</width>
+          <height>50</height>
+         </size>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>260</y>
+        <width>351</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>40</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: white</string>
+      </property>
+      <property name="text">
+       <string>Coming Soon</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="requests_page">
+     <widget class="QWidget" name="widget_16" native="true">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>20</y>
+        <width>521</width>
+        <height>651</height>
+       </rect>
+      </property>
+      <widget class="QLabel" name="label_60">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>70</y>
+         <width>251</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 255);
+font: 75 24pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Find your friends</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="search_textinput">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>200</y>
+         <width>321</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="statusTip">
+        <string/>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLineEdit {
+	color: rgb(255, 255, 255);
+    border: 2px solid #cccccc; 
+    border-radius: 10px;       
+    padding: 5px;            
+    background-color: #121212;  
+
+}
+</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="placeholderText">
+        <string>Enter user name</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="search_button">
+       <property name="geometry">
+        <rect>
+         <x>360</x>
+         <y>200</y>
+         <width>121</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	color: rgb(255, 255, 255);
+	font: 75 16pt &quot;MS Shell Dlg 2&quot;;
+    border: 2px solid #cccccc;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: #121212  ;
+}
+QPushButton:hover {
+    background-color:   ;
+}</string>
+       </property>
+       <property name="text">
+        <string>Send</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="persons_4" native="true">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>10</y>
+        <width>251</width>
+        <height>651</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(30, 30, 30);</string>
       </property>
-      <widget class="QPushButton" name="pushButton_45">
-       <property name="geometry">
-        <rect>
-         <x>-10</x>
-         <y>10</y>
-         <width>91</width>
-         <height>61</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>../GUI desgin/GUI desgin/setting/icons/Vector.png</normaloff>../GUI desgin/GUI desgin/setting/icons/Vector.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>50</width>
-         <height>50</height>
-        </size>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pushButton_46">
+      <widget class="QLabel" name="label_59">
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>70</y>
-         <width>81</width>
-         <height>61</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>../GUI desgin/GUI desgin/setting/icons/Group 1.png</normaloff>../GUI desgin/GUI desgin/setting/icons/Group 1.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>50</width>
-         <height>50</height>
-        </size>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pushButton_47">
-       <property name="geometry">
-        <rect>
-         <x>-10</x>
-         <y>570</y>
-         <width>81</width>
-         <height>61</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>../GUI desgin/GUI desgin/setting/icons/Sign-out.png</normaloff>../GUI desgin/GUI desgin/setting/icons/Sign-out.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>50</width>
-         <height>50</height>
-        </size>
-       </property>
-      </widget>
-     </widget>
-     <widget class="QWidget" name="widget_6" native="true">
-      <property name="geometry">
-       <rect>
-        <x>80</x>
-        <y>20</y>
-        <width>801</width>
-        <height>651</height>
-       </rect>
-      </property>
-      <widget class="QLabel" name="label_19">
-       <property name="geometry">
-        <rect>
-         <x>150</x>
-         <y>200</y>
-         <width>451</width>
-         <height>201</height>
+         <y>20</y>
+         <width>241</width>
+         <height>41</height>
         </rect>
        </property>
        <property name="styleSheet">
         <string notr="true">color: rgb(255, 255, 255);
-font: 75 48pt &quot;MS Shell Dlg 2&quot;;</string>
+font: 75 24pt &quot;MS Shell Dlg 2&quot;;</string>
        </property>
        <property name="text">
-        <string>COMING SOON</string>
+        <string>Friend requests</string>
        </property>
+      </widget>
+      <widget class="QScrollArea" name="scrollArea_4">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>70</y>
+         <width>251</width>
+         <height>581</height>
+        </rect>
+       </property>
+       <property name="widgetResizable">
+        <bool>true</bool>
+       </property>
+       <widget class="QWidget" name="scrollAreaWidgetContents_4">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>249</width>
+          <height>579</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="widget_5" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>10</y>
+        <width>91</width>
+        <height>651</height>
+       </rect>
+      </property>
+      <widget class="QWidget" name="buttons_4" native="true">
+       <property name="geometry">
+        <rect>
+         <x>-10</x>
+         <y>0</y>
+         <width>91</width>
+         <height>691</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(30, 30, 30);</string>
+       </property>
+       <widget class="QPushButton" name="requests_chatting_button">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>30</y>
+          <width>91</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+background-image:url(:/icons/icons/Vector.png);
+ background-position: center;
+background-size: 50px;
+ background-repeat: no-repeat;
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../GUI desgin/GUI desgin/setting/icons/Vector.png</normaloff>../GUI desgin/GUI desgin/setting/icons/Vector.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>50</width>
+          <height>50</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="requests_requests_button">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>100</y>
+          <width>91</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+background-image:url(:/icons/icons/Group 1.png);
+ background-position: center;
+background-size: 50px;
+ background-repeat: no-repeat;
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../GUI desgin/GUI desgin/setting/icons/Group 1.png</normaloff>../GUI desgin/GUI desgin/setting/icons/Group 1.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>50</width>
+          <height>50</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="requests_exit_button">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>590</y>
+          <width>81</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+background-image:url(:/icons/icons/Sign-out.png);
+ background-position: center;
+background-size: 50px;
+ background-repeat: no-repeat;
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../GUI desgin/GUI desgin/setting/icons/Sign-out.png</normaloff>../GUI desgin/GUI desgin/setting/icons/Sign-out.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>50</width>
+          <height>50</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="Line" name="line_7">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>20</y>
+          <width>20</width>
+          <height>641</height>
+         </rect>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="requests_settings_button">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>170</y>
+          <width>91</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+background-image: url(:/icons/icons/settings.png);
+ background-position: center;
+background-size: 50px;
+ background-repeat: no-repeat;
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../GUI desgin/GUI desgin/setting/icons/Group 1.png</normaloff>../GUI desgin/GUI desgin/setting/icons/Group 1.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>50</width>
+          <height>50</height>
+         </size>
+        </property>
+       </widget>
       </widget>
      </widget>
     </widget>
-    <widget class="QWidget" name="null_page"/>
    </widget>
   </widget>
  </widget>

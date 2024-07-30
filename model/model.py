@@ -26,3 +26,9 @@ class Model:
 
     def set_room_id(self):
         pass
+
+    def check_login(self, username, password):
+        pass
+
+    def set_newuser(self, name, username, password):
+        pass
