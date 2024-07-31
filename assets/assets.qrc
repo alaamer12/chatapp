@@ -8,6 +8,10 @@
     <file>icons/Vector.png</file>
   </qresource>
   <qresource prefix="images">
+    <file>images/Untitled design 250x250.png</file>
+    <file>images/Untitled design 500x500.png</file>
+    <file>images/Untitled design 1000x1000.png</file>
+    <file>images/Untitled design 2000x2000.png</file>
     <file>images/User_cicrle_duotone 72x72.png</file>
     <file>images/User_cicrle_duotone 48x48.png</file>
     <file>images/User_cicrle_duotone.png</file>

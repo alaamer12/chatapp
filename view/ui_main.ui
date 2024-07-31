@@ -83,7 +83,7 @@ QHBoxLayout *horizontal_bottom = new QHBoxLayout();
   widget-&gt;setLayout(horizontal_bottom);</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="singin_page">
      <property name="baseSize">
@@ -140,6 +140,9 @@ QHBoxLayout *horizontal_bottom = new QHBoxLayout();
          <height>23</height>
         </rect>
        </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton {
     border: 2px solid #cccccc;
@@ -164,6 +167,9 @@ QPushButton:hover {
          <height>51</height>
         </rect>
        </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
        <property name="autoFillBackground">
         <bool>false</bool>
        </property>
@@ -181,7 +187,7 @@ QPushButton:hover {
 }</string>
        </property>
        <property name="text">
-        <string>Log In</string>
+        <string>Sign In</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_33">
@@ -713,6 +719,9 @@ color: rgb(255, 53, 97);</string>
           <height>51</height>
          </rect>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
          <string notr="true">QPushButton {
 	color: rgb(255, 255, 255);
@@ -778,16 +787,20 @@ QPushButton:hover {
          <height>61</height>
         </rect>
        </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton{
 background-image:url(:/icons/icons/Vector.png);
  background-position: center;
 background-size: 50px;
  background-repeat: no-repeat;
+color: transparent
 }</string>
        </property>
        <property name="text">
-        <string/>
+        <string>Chatting</string>
        </property>
        <property name="icon">
         <iconset>
@@ -809,16 +822,20 @@ background-size: 50px;
          <height>61</height>
         </rect>
        </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton{
 background-image:url(:/icons/icons/Group 1.png);
  background-position: center;
 background-size: 50px;
  background-repeat: no-repeat;
+color: transparent
 }</string>
        </property>
        <property name="text">
-        <string/>
+        <string>Requests</string>
        </property>
        <property name="icon">
         <iconset>
@@ -840,16 +857,20 @@ background-size: 50px;
          <height>61</height>
         </rect>
        </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton{
 background-image:url(:/icons/icons/Sign-out.png);
  background-position: center;
 background-size: 50px;
  background-repeat: no-repeat;
+color: transparent
 }</string>
        </property>
        <property name="text">
-        <string/>
+        <string>Exit</string>
        </property>
        <property name="icon">
         <iconset>
@@ -884,16 +905,20 @@ background-size: 50px;
          <height>61</height>
         </rect>
        </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton{
 background-image: url(:/icons/icons/settings.png);
  background-position: center;
 background-size: 50px;
  background-repeat: no-repeat;
+color: transparent
 }</string>
        </property>
        <property name="text">
-        <string/>
+        <string>Settings</string>
        </property>
        <property name="icon">
         <iconset>
@@ -941,7 +966,7 @@ font: 75 28pt &quot;MS Shell Dlg 2&quot;;</string>
         <string>Messages</string>
        </property>
       </widget>
-      <widget class="QScrollArea" name="scrollArea_3">
+      <widget class="QScrollArea" name="rooms_scrollArea">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -958,7 +983,7 @@ font: 75 28pt &quot;MS Shell Dlg 2&quot;;</string>
        <property name="widgetResizable">
         <bool>true</bool>
        </property>
-       <widget class="QWidget" name="scrollAreaWidgetContents_3">
+       <widget class="QWidget" name="rooms_scrollArea_contents">
         <property name="geometry">
          <rect>
           <x>0</x>
@@ -972,7 +997,7 @@ font: 75 28pt &quot;MS Shell Dlg 2&quot;;</string>
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>241</width>
+           <width>251</width>
            <height>71</height>
           </rect>
          </property>
@@ -982,7 +1007,7 @@ font: 75 28pt &quot;MS Shell Dlg 2&quot;;</string>
             <x>0</x>
             <y>0</y>
             <width>81</width>
-            <height>71</height>
+            <height>61</height>
            </rect>
           </property>
           <property name="styleSheet">
@@ -1024,13 +1049,33 @@ font-weight: 500
           </property>
           <property name="styleSheet">
            <string notr="true">QLabel{
-color: white;
+color: #A0A0A0;
 }</string>
           </property>
           <property name="text">
            <string>username</string>
           </property>
          </widget>
+         <widget class="QPushButton" name="room_clickable_button">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>-10</y>
+            <width>251</width>
+            <height>81</height>
+           </rect>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <zorder>room_clickable_button</zorder>
+         <zorder>avatar</zorder>
+         <zorder>room_name_label</zorder>
+         <zorder>room_username_label</zorder>
         </widget>
        </widget>
       </widget>
@@ -1060,6 +1105,10 @@ color: white;
         <enum>Qt::Vertical</enum>
        </property>
       </widget>
+      <zorder>line_2</zorder>
+      <zorder>label_45</zorder>
+      <zorder>rooms_scrollArea</zorder>
+      <zorder>line_3</zorder>
      </widget>
      <widget class="QWidget" name="widget_12" native="true">
       <property name="geometry">
@@ -1090,10 +1139,10 @@ font: 75 24pt &quot;MS Shell Dlg 2&quot;;</string>
       <widget class="QScrollArea" name="messages_scrollarea">
        <property name="geometry">
         <rect>
-         <x>-1</x>
+         <x>9</x>
          <y>80</y>
-         <width>511</width>
-         <height>531</height>
+         <width>501</width>
+         <height>521</height>
         </rect>
        </property>
        <property name="widgetResizable">
@@ -1104,8 +1153,8 @@ font: 75 24pt &quot;MS Shell Dlg 2&quot;;</string>
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>509</width>
-          <height>529</height>
+          <width>499</width>
+          <height>519</height>
          </rect>
         </property>
         <widget class="QWidget" name="receiver_message" native="true">
@@ -1345,30 +1394,42 @@ color: white;
       <widget class="QLineEdit" name="sned_textinput">
        <property name="geometry">
         <rect>
-         <x>0</x>
+         <x>10</x>
          <y>0</y>
-         <width>441</width>
+         <width>431</width>
          <height>51</height>
         </rect>
        </property>
       </widget>
-      <widget class="QWidget" name="send_message_button" native="true">
+      <widget class="QPushButton" name="send_message_button">
        <property name="geometry">
         <rect>
-         <x>449</x>
+         <x>440</x>
          <y>0</y>
          <width>61</width>
          <height>51</height>
         </rect>
        </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
        <property name="styleSheet">
-        <string notr="true">QWidget{
+        <string notr="true">QPushButton{
 background-image:url(:/icons/icons/Send_hor 48x48.png);
  background-position: center;
 background-size: 50px;
  background-repeat: no-repeat;
 border: none;
 }</string>
+       </property>
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </widget>
@@ -1404,6 +1465,9 @@ border: none;
           <height>61</height>
          </rect>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
          <string notr="true">QPushButton{
 background-image:url(:/icons/icons/Vector.png);
@@ -1435,6 +1499,9 @@ background-size: 50px;
           <height>61</height>
          </rect>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
          <string notr="true">QPushButton{
 background-image:url(:/icons/icons/Group 1.png);
@@ -1465,6 +1532,9 @@ background-size: 50px;
           <width>81</width>
           <height>61</height>
          </rect>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton{
@@ -1509,6 +1579,9 @@ background-size: 50px;
           <width>91</width>
           <height>61</height>
          </rect>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton{
@@ -1585,10 +1658,10 @@ font: 75 24pt &quot;MS Shell Dlg 2&quot;;</string>
         <string>Find your friends</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="search_textinput">
+      <widget class="QLineEdit" name="send_button_2">
        <property name="geometry">
         <rect>
-         <x>10</x>
+         <x>20</x>
          <y>200</y>
          <width>321</width>
          <height>41</height>
@@ -1615,7 +1688,7 @@ font: 75 24pt &quot;MS Shell Dlg 2&quot;;</string>
         <string>Enter user name</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="search_button">
+      <widget class="QPushButton" name="send_button">
        <property name="geometry">
         <rect>
          <x>360</x>
@@ -1623,6 +1696,9 @@ font: 75 24pt &quot;MS Shell Dlg 2&quot;;</string>
          <width>121</width>
          <height>41</height>
         </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
        </property>
        <property name="autoFillBackground">
         <bool>false</bool>
@@ -1644,6 +1720,47 @@ QPushButton:hover {
         <string>Send</string>
        </property>
       </widget>
+      <widget class="QLabel" name="friend_request_label">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>260</y>
+         <width>191</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: white;
+background: transparent</string>
+       </property>
+       <property name="text">
+        <string>friend request status</string>
+       </property>
+      </widget>
+      <widget class="QWidget" name="widget_6" native="true">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>330</y>
+         <width>211</width>
+         <height>201</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QWidget{
+background-image: url(:/images/images/Untitled design 250x250.png);
+ background-position: center;
+background-size: 50px;
+ background-repeat: no-repeat;
+}</string>
+       </property>
+      </widget>
      </widget>
      <widget class="QWidget" name="persons_4" native="true">
       <property name="geometry">
@@ -1660,8 +1777,8 @@ QPushButton:hover {
       <widget class="QLabel" name="label_59">
        <property name="geometry">
         <rect>
-         <x>0</x>
-         <y>20</y>
+         <x>20</x>
+         <y>10</y>
          <width>241</width>
          <height>41</height>
         </rect>
@@ -1674,27 +1791,218 @@ font: 75 24pt &quot;MS Shell Dlg 2&quot;;</string>
         <string>Friend requests</string>
        </property>
       </widget>
-      <widget class="QScrollArea" name="scrollArea_4">
+      <widget class="QScrollArea" name="request_scrollArea">
        <property name="geometry">
         <rect>
-         <x>0</x>
-         <y>70</y>
-         <width>251</width>
+         <x>10</x>
+         <y>60</y>
+         <width>231</width>
          <height>581</height>
         </rect>
        </property>
        <property name="widgetResizable">
         <bool>true</bool>
        </property>
-       <widget class="QWidget" name="scrollAreaWidgetContents_4">
+       <widget class="QWidget" name="request_scrollArea_contents">
         <property name="geometry">
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>249</width>
+          <width>229</width>
           <height>579</height>
          </rect>
         </property>
+        <widget class="QWidget" name="request_box" native="true">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>231</width>
+           <height>161</height>
+          </rect>
+         </property>
+         <widget class="QLabel" name="label_2">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>10</y>
+            <width>47</width>
+            <height>13</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: white</string>
+          </property>
+          <property name="text">
+           <string>Request:</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="requester_name">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>30</y>
+            <width>211</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: white</string>
+          </property>
+          <property name="text">
+           <string>Full Name</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="requester_date">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>70</y>
+            <width>201</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel{
+color: white;
+}</string>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Send a request to chat with you &lt;br/&gt;at: date&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QWidget" name="requests_buttons" native="true">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>110</y>
+            <width>181</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <widget class="QPushButton" name="request_accept_button">
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: #444444;
+color: #E0E0E0;
+border-radius: 5px;
+width: 70px;
+height: 35px;</string>
+             </property>
+             <property name="text">
+              <string>Accept</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>8</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="request_decline_button">
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton{
+background-color: #CF6679;
+color: #E0E0E0;
+border-radius: 5px;
+width: 70px;
+height: 35px;
+}</string>
+             </property>
+             <property name="text">
+              <string>Decline</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QLabel" name="requester_username">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>50</y>
+            <width>211</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: #A0A0A0</string>
+          </property>
+          <property name="text">
+           <string>Username</string>
+          </property>
+         </widget>
+         <widget class="Line" name="line_4">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>150</y>
+            <width>231</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QLabel" name="no_requests_label">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>231</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+           <weight>75</weight>
+           <italic>true</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel{
+color: white;
+}</string>
+         </property>
+         <property name="text">
+          <string>No Requests</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+        <zorder>no_requests_label</zorder>
+        <zorder>request_box</zorder>
        </widget>
       </widget>
      </widget>
@@ -1728,6 +2036,9 @@ font: 75 24pt &quot;MS Shell Dlg 2&quot;;</string>
           <height>61</height>
          </rect>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
          <string notr="true">QPushButton{
 background-image:url(:/icons/icons/Vector.png);
@@ -1758,6 +2069,9 @@ background-size: 50px;
           <width>91</width>
           <height>61</height>
          </rect>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton{
@@ -1790,6 +2104,9 @@ background-size: 50px;
           <height>61</height>
          </rect>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
          <string notr="true">QPushButton{
 background-image:url(:/icons/icons/Sign-out.png);
@@ -1815,9 +2132,9 @@ background-size: 50px;
        <widget class="Line" name="line_7">
         <property name="geometry">
          <rect>
-          <x>80</x>
+          <x>76</x>
           <y>20</y>
-          <width>20</width>
+          <width>16</width>
           <height>641</height>
          </rect>
         </property>
@@ -1833,6 +2150,9 @@ background-size: 50px;
           <width>91</width>
           <height>61</height>
          </rect>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton{
