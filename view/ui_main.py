@@ -380,7 +380,6 @@ class Ui_MainWindow(object):
         self.chatting_chatting_button.setStyleSheet("QPushButton{\n"
 "background-image:url(:/icons/icons/Vector.png);\n"
 " background-position: center;\n"
-"background-size: 50px;\n"
 " background-repeat: no-repeat;\n"
 "color: transparent\n"
 "}")
@@ -395,7 +394,7 @@ class Ui_MainWindow(object):
         self.chatting_requests_button.setStyleSheet("QPushButton{\n"
 "background-image:url(:/icons/icons/Group 1.png);\n"
 " background-position: center;\n"
-"background-size: 50px;\n"
+
 " background-repeat: no-repeat;\n"
 "color: transparent\n"
 "}")
@@ -410,7 +409,7 @@ class Ui_MainWindow(object):
         self.chatting_exit_button.setStyleSheet("QPushButton{\n"
 "background-image:url(:/icons/icons/Sign-out.png);\n"
 " background-position: center;\n"
-"background-size: 50px;\n"
+
 " background-repeat: no-repeat;\n"
 "color: transparent\n"
 "}")
@@ -430,7 +429,7 @@ class Ui_MainWindow(object):
         self.chatting_settings_button.setStyleSheet("QPushButton{\n"
 "background-image: url(:/icons/icons/settings.png);\n"
 " background-position: center;\n"
-"background-size: 50px;\n"
+
 " background-repeat: no-repeat;\n"
 "color: transparent\n"
 "}")
@@ -461,40 +460,6 @@ class Ui_MainWindow(object):
         self.rooms_scrollArea_contents = QtWidgets.QWidget()
         self.rooms_scrollArea_contents.setGeometry(QtCore.QRect(0, 0, 241, 571))
         self.rooms_scrollArea_contents.setObjectName("rooms_scrollArea_contents")
-        self.room = QtWidgets.QWidget(self.rooms_scrollArea_contents)
-        self.room.setGeometry(QtCore.QRect(0, 0, 251, 71))
-        self.room.setObjectName("room")
-        self.avatar = QtWidgets.QWidget(self.room)
-        self.avatar.setGeometry(QtCore.QRect(0, 0, 81, 61))
-        self.avatar.setStyleSheet("QWidget{\n"
-"background-image:url(:/images/images/User_cicrle_duotone 72x72.png);\n"
-" background-position: center;\n"
-"background-size: 50px;\n"
-" background-repeat: no-repeat;\n"
-"}")
-        self.avatar.setObjectName("avatar")
-        self.room_name_label = QtWidgets.QLabel(self.room)
-        self.room_name_label.setGeometry(QtCore.QRect(90, 10, 47, 13))
-        self.room_name_label.setStyleSheet("QLabel{\n"
-"color: white;\n"
-"font-weight: 500\n"
-"}")
-        self.room_name_label.setObjectName("room_name_label")
-        self.room_username_label = QtWidgets.QLabel(self.room)
-        self.room_username_label.setGeometry(QtCore.QRect(90, 40, 47, 13))
-        self.room_username_label.setStyleSheet("QLabel{\n"
-"color: #A0A0A0;\n"
-"}")
-        self.room_username_label.setObjectName("room_username_label")
-        self.room_clickable_button = QtWidgets.QPushButton(self.room)
-        self.room_clickable_button.setGeometry(QtCore.QRect(0, -10, 251, 81))
-        self.room_clickable_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.room_clickable_button.setText("")
-        self.room_clickable_button.setObjectName("room_clickable_button")
-        self.room_clickable_button.raise_()
-        self.avatar.raise_()
-        self.room_name_label.raise_()
-        self.room_username_label.raise_()
         self.rooms_scrollArea.setWidget(self.rooms_scrollArea_contents)
         self.line_2 = QtWidgets.QFrame(self.persons_3)
         self.line_2.setGeometry(QtCore.QRect(0, 60, 251, 20))
@@ -525,60 +490,6 @@ class Ui_MainWindow(object):
         self.messages_scrollarea_contents = QtWidgets.QWidget()
         self.messages_scrollarea_contents.setGeometry(QtCore.QRect(0, 0, 499, 519))
         self.messages_scrollarea_contents.setObjectName("messages_scrollarea_contents")
-        self.receiver_message = QtWidgets.QWidget(self.messages_scrollarea_contents)
-        self.receiver_message.setGeometry(QtCore.QRect(320, 50, 171, 41))
-        self.receiver_message.setStyleSheet("QWidget{\n"
-"background-color: #BB86FC;\n"
-"border-radius: 8px\n"
-"}")
-        self.receiver_message.setObjectName("receiver_message")
-        self.receiver_message_content = QtWidgets.QLabel(self.receiver_message)
-        self.receiver_message_content.setGeometry(QtCore.QRect(-10, 10, 171, 20))
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(62)
-        font.setStrikeOut(False)
-        self.receiver_message_content.setFont(font)
-        self.receiver_message_content.setStyleSheet("QLabel{\n"
-"color: #E0E0E0;\n"
-"font-weight: 500;\n"
-"}")
-        self.receiver_message_content.setObjectName("receiver_message_content")
-        self.receiver_message_date = QtWidgets.QLabel(self.receiver_message)
-        self.receiver_message_date.setGeometry(QtCore.QRect(140, 30, 47, 13))
-        font = QtGui.QFont()
-        font.setPointSize(5)
-        self.receiver_message_date.setFont(font)
-        self.receiver_message_date.setStyleSheet("color: white")
-        self.receiver_message_date.setObjectName("receiver_message_date")
-        self.sender_message = QtWidgets.QWidget(self.messages_scrollarea_contents)
-        self.sender_message.setGeometry(QtCore.QRect(10, 110, 91, 41))
-        self.sender_message.setStyleSheet("QWidget{\n"
-"background-color: rgb(30, 30, 30);\n"
-"border-radius: 8px\n"
-"}")
-        self.sender_message.setObjectName("sender_message")
-        self.sender_message_content = QtWidgets.QLabel(self.sender_message)
-        self.sender_message_content.setGeometry(QtCore.QRect(0, 10, 51, 20))
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(62)
-        font.setStrikeOut(False)
-        self.sender_message_content.setFont(font)
-        self.sender_message_content.setStyleSheet("QLabel{\n"
-"color: #E0E0E0;\n"
-"font-weight: 500;\n"
-"}")
-        self.sender_message_content.setObjectName("sender_message_content")
-        self.sender_message_date = QtWidgets.QLabel(self.sender_message)
-        self.sender_message_date.setGeometry(QtCore.QRect(40, 30, 47, 13))
-        font = QtGui.QFont()
-        font.setPointSize(5)
-        self.sender_message_date.setFont(font)
-        self.sender_message_date.setStyleSheet("color: white")
-        self.sender_message_date.setObjectName("sender_message_date")
         self.messages_scrollarea.setWidget(self.messages_scrollarea_contents)
         self.widget = QtWidgets.QWidget(self.widget_12)
         self.widget.setGeometry(QtCore.QRect(-1, 20, 531, 641))
@@ -595,7 +506,7 @@ class Ui_MainWindow(object):
         self.message_box_avatar.setStyleSheet("QWidget{\n"
 "background-image:url(:/images/images/User_cicrle_duotone 48x48.png);\n"
 " background-position: center;\n"
-"background-size: 50px;\n"
+
 " background-repeat: no-repeat;\n"
 "}")
         self.message_box_avatar.setObjectName("message_box_avatar")
@@ -622,6 +533,7 @@ class Ui_MainWindow(object):
         self.sned_textinput = QtWidgets.QLineEdit(self.widget_3)
         self.sned_textinput.setGeometry(QtCore.QRect(10, 0, 431, 51))
         self.sned_textinput.setObjectName("sned_textinput")
+        self.sned_textinput.setStyleSheet("color:white;")
         self.send_message_button = QtWidgets.QPushButton(self.widget_3)
         self.send_message_button.setGeometry(QtCore.QRect(440, 0, 61, 51))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
@@ -633,7 +545,7 @@ class Ui_MainWindow(object):
         self.send_message_button.setStyleSheet("QPushButton{\n"
 "background-image:url(:/icons/icons/Send_hor 48x48.png);\n"
 " background-position: center;\n"
-"background-size: 50px;\n"
+
 " background-repeat: no-repeat;\n"
 "border: none;\n"
 "}")
@@ -643,10 +555,10 @@ class Ui_MainWindow(object):
         self.settings_page = QtWidgets.QWidget()
         self.settings_page.setObjectName("settings_page")
         self.widget_4 = QtWidgets.QWidget(self.settings_page)
-        self.widget_4.setGeometry(QtCore.QRect(0, 10, 81, 651))
+        self.widget_4.setGeometry(QtCore.QRect(0, -10, 81, 661))
         self.widget_4.setObjectName("widget_4")
         self.buttons_5 = QtWidgets.QWidget(self.widget_4)
-        self.buttons_5.setGeometry(QtCore.QRect(-10, -10, 91, 691))
+        self.buttons_5.setGeometry(QtCore.QRect(0, 0, 91, 691))
         self.buttons_5.setStyleSheet("background-color: rgb(30, 30, 30);")
         self.buttons_5.setObjectName("buttons_5")
         self.settings_chatting_button = QtWidgets.QPushButton(self.buttons_5)
@@ -655,7 +567,7 @@ class Ui_MainWindow(object):
         self.settings_chatting_button.setStyleSheet("QPushButton{\n"
 "background-image:url(:/icons/icons/Vector.png);\n"
 " background-position: center;\n"
-"background-size: 50px;\n"
+
 " background-repeat: no-repeat;\n"
 "}")
         self.settings_chatting_button.setText("")
@@ -668,7 +580,7 @@ class Ui_MainWindow(object):
         self.settings_requests_button.setStyleSheet("QPushButton{\n"
 "background-image:url(:/icons/icons/Group 1.png);\n"
 " background-position: center;\n"
-"background-size: 50px;\n"
+
 " background-repeat: no-repeat;\n"
 "}")
         self.settings_requests_button.setText("")
@@ -681,7 +593,7 @@ class Ui_MainWindow(object):
         self.settings_exit_button.setStyleSheet("QPushButton{\n"
 "background-image:url(:/icons/icons/Sign-out.png);\n"
 " background-position: center;\n"
-"background-size: 50px;\n"
+
 " background-repeat: no-repeat;\n"
 "}")
         self.settings_exit_button.setText("")
@@ -699,7 +611,7 @@ class Ui_MainWindow(object):
         self.settings_settings_button.setStyleSheet("QPushButton{\n"
 "background-image: url(:/icons/icons/settings.png);\n"
 " background-position: center;\n"
-"background-size: 50px;\n"
+
 " background-repeat: no-repeat;\n"
 "}")
         self.settings_settings_button.setText("")
@@ -726,10 +638,10 @@ class Ui_MainWindow(object):
         self.label_60.setStyleSheet("color: rgb(255, 255, 255);\n"
 "font: 75 24pt \"MS Shell Dlg 2\";")
         self.label_60.setObjectName("label_60")
-        self.send_button_2 = QtWidgets.QLineEdit(self.widget_16)
-        self.send_button_2.setGeometry(QtCore.QRect(20, 200, 321, 41))
-        self.send_button_2.setStatusTip("")
-        self.send_button_2.setStyleSheet("QLineEdit {\n"
+        self.send_textinput = QtWidgets.QLineEdit(self.widget_16)
+        self.send_textinput.setGeometry(QtCore.QRect(20, 200, 321, 41))
+        self.send_textinput.setStatusTip("")
+        self.send_textinput.setStyleSheet("QLineEdit {\n"
 "    color: rgb(255, 255, 255);\n"
 "    border: 2px solid #cccccc; \n"
 "    border-radius: 10px;       \n"
@@ -738,8 +650,8 @@ class Ui_MainWindow(object):
 "\n"
 "}\n"
 "")
-        self.send_button_2.setText("")
-        self.send_button_2.setObjectName("send_button_2")
+        self.send_textinput.setText("")
+        self.send_textinput.setObjectName("send_textinput")
         self.send_button = QtWidgets.QPushButton(self.widget_16)
         self.send_button.setGeometry(QtCore.QRect(360, 200, 121, 41))
         self.send_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
@@ -770,7 +682,7 @@ class Ui_MainWindow(object):
         self.widget_6.setStyleSheet("QWidget{\n"
 "background-image: url(:/images/images/Untitled design 250x250.png);\n"
 " background-position: center;\n"
-"background-size: 50px;\n"
+
 " background-repeat: no-repeat;\n"
 "}")
         self.widget_6.setObjectName("widget_6")
@@ -790,66 +702,6 @@ class Ui_MainWindow(object):
         self.request_scrollArea_contents = QtWidgets.QWidget()
         self.request_scrollArea_contents.setGeometry(QtCore.QRect(0, 0, 229, 579))
         self.request_scrollArea_contents.setObjectName("request_scrollArea_contents")
-        self.request_box = QtWidgets.QWidget(self.request_scrollArea_contents)
-        self.request_box.setGeometry(QtCore.QRect(0, 0, 231, 161))
-        self.request_box.setObjectName("request_box")
-        self.label_2 = QtWidgets.QLabel(self.request_box)
-        self.label_2.setGeometry(QtCore.QRect(10, 10, 47, 13))
-        self.label_2.setStyleSheet("color: white")
-        self.label_2.setObjectName("label_2")
-        self.requester_name = QtWidgets.QLabel(self.request_box)
-        self.requester_name.setGeometry(QtCore.QRect(10, 30, 211, 16))
-        self.requester_name.setStyleSheet("color: white")
-        self.requester_name.setObjectName("requester_name")
-        self.requester_date = QtWidgets.QLabel(self.request_box)
-        self.requester_date.setGeometry(QtCore.QRect(10, 70, 201, 41))
-        font = QtGui.QFont()
-        font.setPointSize(9)
-        font.setBold(True)
-        font.setWeight(75)
-        self.requester_date.setFont(font)
-        self.requester_date.setStyleSheet("QLabel{\n"
-"color: white;\n"
-"}")
-        self.requester_date.setWordWrap(True)
-        self.requester_date.setObjectName("requester_date")
-        self.requests_buttons = QtWidgets.QWidget(self.request_box)
-        self.requests_buttons.setGeometry(QtCore.QRect(20, 110, 181, 41))
-        self.requests_buttons.setObjectName("requests_buttons")
-        self.horizontalLayout = QtWidgets.QHBoxLayout(self.requests_buttons)
-        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.request_accept_button = QtWidgets.QPushButton(self.requests_buttons)
-        self.request_accept_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.request_accept_button.setStyleSheet("background-color: #444444;\n"
-"color: #E0E0E0;\n"
-"border-radius: 5px;\n"
-"width: 70px;\n"
-"height: 35px;")
-        self.request_accept_button.setObjectName("request_accept_button")
-        self.horizontalLayout.addWidget(self.request_accept_button)
-        spacerItem = QtWidgets.QSpacerItem(8, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem)
-        self.request_decline_button = QtWidgets.QPushButton(self.requests_buttons)
-        self.request_decline_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.request_decline_button.setStyleSheet("QPushButton{\n"
-"background-color: #CF6679;\n"
-"color: #E0E0E0;\n"
-"border-radius: 5px;\n"
-"width: 70px;\n"
-"height: 35px;\n"
-"}")
-        self.request_decline_button.setObjectName("request_decline_button")
-        self.horizontalLayout.addWidget(self.request_decline_button)
-        self.requester_username = QtWidgets.QLabel(self.request_box)
-        self.requester_username.setGeometry(QtCore.QRect(10, 50, 211, 16))
-        self.requester_username.setStyleSheet("color: #A0A0A0")
-        self.requester_username.setObjectName("requester_username")
-        self.line_4 = QtWidgets.QFrame(self.request_box)
-        self.line_4.setGeometry(QtCore.QRect(0, 150, 231, 20))
-        self.line_4.setFrameShape(QtWidgets.QFrame.HLine)
-        self.line_4.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.line_4.setObjectName("line_4")
         self.no_requests_label = QtWidgets.QLabel(self.request_scrollArea_contents)
         self.no_requests_label.setGeometry(QtCore.QRect(0, 0, 231, 41))
         font = QtGui.QFont()
@@ -863,14 +715,12 @@ class Ui_MainWindow(object):
 "}")
         self.no_requests_label.setAlignment(QtCore.Qt.AlignCenter)
         self.no_requests_label.setObjectName("no_requests_label")
-        self.no_requests_label.raise_()
-        self.request_box.raise_()
         self.request_scrollArea.setWidget(self.request_scrollArea_contents)
         self.widget_5 = QtWidgets.QWidget(self.requests_page)
-        self.widget_5.setGeometry(QtCore.QRect(0, 10, 91, 651))
+        self.widget_5.setGeometry(QtCore.QRect(0, -10, 91, 661))
         self.widget_5.setObjectName("widget_5")
         self.buttons_4 = QtWidgets.QWidget(self.widget_5)
-        self.buttons_4.setGeometry(QtCore.QRect(-10, 0, 91, 691))
+        self.buttons_4.setGeometry(QtCore.QRect(0, 0, 91, 691))
         self.buttons_4.setStyleSheet("background-color: rgb(30, 30, 30);")
         self.buttons_4.setObjectName("buttons_4")
         self.requests_chatting_button = QtWidgets.QPushButton(self.buttons_4)
@@ -879,7 +729,7 @@ class Ui_MainWindow(object):
         self.requests_chatting_button.setStyleSheet("QPushButton{\n"
 "background-image:url(:/icons/icons/Vector.png);\n"
 " background-position: center;\n"
-"background-size: 50px;\n"
+
 " background-repeat: no-repeat;\n"
 "}")
         self.requests_chatting_button.setText("")
@@ -892,7 +742,7 @@ class Ui_MainWindow(object):
         self.requests_requests_button.setStyleSheet("QPushButton{\n"
 "background-image:url(:/icons/icons/Group 1.png);\n"
 " background-position: center;\n"
-"background-size: 50px;\n"
+
 " background-repeat: no-repeat;\n"
 "}")
         self.requests_requests_button.setText("")
@@ -905,7 +755,7 @@ class Ui_MainWindow(object):
         self.requests_exit_button.setStyleSheet("QPushButton{\n"
 "background-image:url(:/icons/icons/Sign-out.png);\n"
 " background-position: center;\n"
-"background-size: 50px;\n"
+
 " background-repeat: no-repeat;\n"
 "}")
         self.requests_exit_button.setText("")
@@ -923,7 +773,7 @@ class Ui_MainWindow(object):
         self.requests_settings_button.setStyleSheet("QPushButton{\n"
 "background-image: url(:/icons/icons/settings.png);\n"
 " background-position: center;\n"
-"background-size: 50px;\n"
+
 " background-repeat: no-repeat;\n"
 "}")
         self.requests_settings_button.setText("")
@@ -964,26 +814,14 @@ class Ui_MainWindow(object):
         self.chatting_exit_button.setText(_translate("MainWindow", "Exit"))
         self.chatting_settings_button.setText(_translate("MainWindow", "Settings"))
         self.label_45.setText(_translate("MainWindow", "Messages"))
-        self.room_name_label.setText(_translate("MainWindow", "Name"))
-        self.room_username_label.setText(_translate("MainWindow", "username"))
         self.no_rooms_label.setText(_translate("MainWindow", "Select a chat to start Messaging"))
-        self.receiver_message_content.setText(_translate("MainWindow", "هنكمل شغل واله ايه"))
-        self.receiver_message_date.setText(_translate("MainWindow", "9:28 AM"))
-        self.sender_message_content.setText(_translate("MainWindow", "ماشي"))
-        self.sender_message_date.setText(_translate("MainWindow", "9:28 AM"))
         self.message_box_name_label.setText(_translate("MainWindow", "Name"))
         self.message_box_status.setText(_translate("MainWindow", "status"))
         self.label.setText(_translate("MainWindow", "Coming Soon"))
         self.label_60.setText(_translate("MainWindow", "Find your friends"))
-        self.send_button_2.setPlaceholderText(_translate("MainWindow", "Enter user name"))
+        self.send_textinput.setPlaceholderText(_translate("MainWindow", "Enter user name"))
         self.send_button.setText(_translate("MainWindow", "Send"))
         self.friend_request_label.setText(_translate("MainWindow", "friend request status"))
         self.label_59.setText(_translate("MainWindow", "Friend requests"))
-        self.label_2.setText(_translate("MainWindow", "Request:"))
-        self.requester_name.setText(_translate("MainWindow", "Full Name"))
-        self.requester_date.setText(_translate("MainWindow", "<html><head/><body><p>Send a request to chat with you <br/>at: date</p></body></html>"))
-        self.request_accept_button.setText(_translate("MainWindow", "Accept"))
-        self.request_decline_button.setText(_translate("MainWindow", "Decline"))
-        self.requester_username.setText(_translate("MainWindow", "Username"))
         self.no_requests_label.setText(_translate("MainWindow", "No Requests"))
 import assets.assets

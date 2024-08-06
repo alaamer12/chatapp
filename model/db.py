@@ -2,7 +2,7 @@ import contextlib
 import mysql.connector
 from typing import List, Tuple, Optional
 import sys
-from .helpers.constants import Users_METADATA, Friends_METADATA, Message_METADATA
+from .helpers.constants import Users_METADATA, Friends_METADATA, Message_METADATA, Requests_METADATA
 
 
 class DB:
@@ -24,11 +24,13 @@ class DB:
         self.__create_tables()
         self._room_id = ""
 
+
     def __create_tables(self) -> None:
         tables = {
             'Users': Users_METADATA,
             'Message': Message_METADATA,
-            'Friends': Friends_METADATA
+            'Friends': Friends_METADATA,
+            'Requests': Requests_METADATA
         }
         for table_name, columns in tables.items():
             columns_str = ', '.join(columns)
@@ -125,6 +127,50 @@ class DB:
 
         return result if result else []
 
+    def get_all_where(self, table: str, condition: str, *columns) -> List[Tuple]:
+        if not columns:
+            # Get all the data in the table
+            query = f'SELECT * FROM {table} WHERE {condition}'
+        else:
+            # Ensure requested columns are valid for the table
+            valid_columns = [col.split(' ')[0] for col in self.__get_table_metadata(table)]
+            for column in columns:
+                if column not in valid_columns:
+                    raise ValueError(f"Column {column} does not exist in table {table}")
+
+            columns_str = ', '.join(columns)
+            query = f'SELECT {columns_str} FROM {table} WHERE {condition}'
+
+        with self.connection() as cursor:
+            cursor.execute(query)
+            result: List[Tuple] = cursor.fetchall()
+
+        return result if result else []
+
+    def get_one(self, table: str, column: str, value: str) -> Optional[Tuple]:
+        query = f"SELECT * FROM {table} WHERE {column} = %s"
+        with self.connection() as cursor:
+            cursor.execute(query, (value,))
+            result = cursor.fetchone()
+
+        return result if result else None
+
+    def get_inner_join(self, first_table: str, second_table: str, first_table_column: str,
+                       second_table_column: str, *columns) -> List[Tuple]:
+        columns_str = ', '.join(columns)
+        query = (
+            f'SELECT {columns_str} '
+            f'FROM {first_table} '
+            f'INNER JOIN {second_table} '
+            f'ON {first_table}.{first_table_column} = {second_table}.{second_table_column}'
+        )
+
+        with self.connection() as cursor:
+            cursor.execute(query)
+            result = cursor.fetchall()
+
+        return result if result else None
+
     def is_user_online(self, user_id: str) -> bool:
         query = "SELECT IsOnline FROM Users WHERE UserID = %s"
         self.__cursor.execute(query, (user_id,))
@@ -136,6 +182,19 @@ class DB:
         self.__cursor.execute(query)
         columns = self.__cursor.fetchall()
         return [col[0] for col in columns]
+
+    def delete_rows(self, table: str, condition: str):
+        query = f"DELETE FROM {table} WHERE {condition}"
+        with self.connection() as cursor:
+            cursor.execute(query)
+
+    def delete_columns(self, table: str, condition: str, *columns: str):
+        # Create a SET clause with columns set to NULL
+        set_clause = ', '.join(f"{column} = NULL" for column in columns)
+        query = f"UPDATE {table} SET {set_clause} WHERE {condition}"
+
+        with self.connection() as cursor:
+            cursor.execute(query)
 
     def close(self):
         if self.__conn:

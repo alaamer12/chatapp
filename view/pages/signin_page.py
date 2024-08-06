@@ -1,8 +1,10 @@
 from .base_page import BasePage
 
+
 class SignIn(BasePage):
     def __init__(self, controller, ui):
         super().__init__(controller, ui)
+        self.initialize_page()
 
     def initialize_page(self):
         print("Initializing SignIn Page")
@@ -18,8 +20,13 @@ class SignIn(BasePage):
         print("SignIn button clicked")
         username = self.ui.username_textinput.text().strip()
         password = self.ui.password_textinput.text().strip()
-        self.controller.handle_signin_clicked(username, password)
+        success = self.controller.handle_.signin_clicked(username, password)
+        if not success:
+            self.ui.invalid_signin_label.show()
+        else:
+            self.ui.invalid_signin_label.hide()
+            self.controller.view.set_page(self.controller.view.Pages.CHATTING)
 
     def on_signup_clicked(self):
         print("SignUp button clicked")
-        self.controller.handle_signup_clicked()
+        self.controller.handle_.signup_clicked()

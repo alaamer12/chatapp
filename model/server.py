@@ -1,16 +1,30 @@
 import socket
-import threading
 from .helpers.printer import print_info, print_error
+import threading
 
 
 class Server:
-    def __init__(self, *, host, port):
-        self.__clients = {}
-        self.__usernames = {}
+    __instance = None
+    __lock = threading.Lock()
 
-        self.__server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.__server.bind((host, port))
-        self.__server.listen()
+    def __new__(cls, *args, **kwargs):
+        with cls.__lock:
+            if cls.__instance is None:
+                cls.__instance = super().__new__(cls)
+        return cls.__instance
+
+    def __init__(self, *, host, port):
+        if not hasattr(self, '_initialized'):
+            self.__clients = {}
+            self.__usernames = {}
+
+            self.__server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            # Set SO_REUSEADDR option to allow reuse of the address
+            self.__server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            self.__server.bind((host, port))
+            self.__server.listen()
+
+            self._initialized = True
 
     def broadcast(self, message):
         for client in list(self.__clients.keys()):
@@ -19,8 +33,9 @@ class Server:
             except Exception as e:
                 client.close()
                 del self.__clients[client]
-                username = self.__usernames.pop(client)
-                self.broadcast(f'{username} left the chat!'.encode('utf-8'))
+                username = self.__usernames.pop(client, None)
+                if username:
+                    self.broadcast(f'{username} left the chat!'.encode('utf-8'))
                 print_error(f"Error: {e}")
 
     def start(self):
@@ -54,8 +69,9 @@ class Server:
             except Exception as e:
                 client.close()
                 del self.__clients[client]
-                username = self.__usernames.pop(client)
-                self.broadcast(f'{username} left the chat!'.encode('utf-8'))
+                username = self.__usernames.pop(client, None)
+                if username:
+                    self.broadcast(f'{username} left the chat!'.encode('utf-8'))
                 print_error(f"Error: {e}")
                 break
 
@@ -64,7 +80,8 @@ class Server:
 
 
 if __name__ == "__main__":
-    from helpers.constants import HOST, PORT
+    from .helpers.constants import HOST, PORT
+
     server = Server(host=HOST, port=PORT)
     print("Server is running...")
     try:

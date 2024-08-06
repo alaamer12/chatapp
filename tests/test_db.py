@@ -35,9 +35,16 @@ def db():
         FOREIGN KEY (FriendID) REFERENCES Users(UserID))
         """)
     cursor.execute(
-        "CREATE TABLE Friends (RoomID VARCHAR(255), Name VARCHAR(255), UserID VARCHAR(255), PRIMARY KEY (RoomID, Name, UserID))")
+        "CREATE TABLE Friends (RoomID INT, Name VARCHAR(255), UserID VARCHAR(255), PRIMARY KEY (RoomID, Name, UserID))")
     cursor.execute(
-        "CREATE TABLE Message (MessageID VARCHAR(255) PRIMARY KEY, UserID VARCHAR(255), Content TEXT, DateTime DATETIME, RoomID VARCHAR(255))")
+        "CREATE TABLE Message (MessageID VARCHAR(255) PRIMARY KEY, UserID VARCHAR(255), Content TEXT, DateTime DATETIME, RoomID INT)")
+    cursor.execute(
+        "CREATE TABLE Requests (RequestID INT PRIMARY KEY, "
+        "UserID VARCHAR(255), FriendID VARCHAR(255), "
+        "IsAccept BOOLEAN, RequestDateTime DATETIME, "
+        "FOREIGN KEY (UserID) REFERENCES Users(UserID), "
+        "FOREIGN KEY (FriendID) REFERENCES Users(UserID))"
+    )
     cursor.close()
 
     db_instance = DB(localhost=TEST_DB_LOCALHOST, user=TEST_DB_USER, password=TEST_DB_PASSWORD, database=TEST_DB_NAME)
@@ -70,6 +77,7 @@ class TestDatabase:
         assert 'users' in tables
         assert 'message' in tables
         assert 'friends' in tables
+        assert 'requests' in tables
 
     def test_add_to(self, db):
         # Generate unique IDs for the users
@@ -81,10 +89,10 @@ class TestDatabase:
         db.add_to('Users', UserID=user_id, FriendID=friend_id, UserName='Test User', Password='hashed_password',
                   IsOnline=1, IsAccept=1)
 
-        db.add_to('Friends', RoomID='room1', Name='Friend1', UserID=user_id)
+        db.add_to('Friends', RoomID=0, Name='Friend1', UserID=user_id)
 
         result = db.get_all('Friends', 'RoomID', 'Name', 'UserID')
-        assert ('room1', 'Friend1', user_id) in result
+        assert (0, 'Friend1', user_id) in result
 
     def test_update_at(self, db):
         user_id = generate_unique_id()
@@ -111,7 +119,7 @@ class TestDatabase:
         # Add a message after adding the user
         db.add_to('Message', MessageID=generate_unique_id(), UserID=user_id, Content='Test Message',
                   DateTime=timestamp,
-                  RoomID='room1')
+                  RoomID=0)
 
         # Retrieve the last message
         result = db.get_last_by('room1', 'Message', 'MessageID', 'Content', 'DateTime')
@@ -126,11 +134,11 @@ class TestDatabase:
                   IsOnline=1, IsAccept=1)
 
         # Then add friends data
-        db.add_to('Friends', RoomID='room1', Name='Friend1', UserID=user_id)
+        db.add_to('Friends', RoomID=0, Name='Friend1', UserID=user_id)
 
         # Retrieve and check friends data
         result = db.get_all('Friends', 'RoomID', 'Name', 'UserID')
-        assert ('room1', 'Friend1', user_id) in result
+        assert (0, 'Friend1', user_id) in result
 
     def test_is_user_online(self, db):
         user_id = generate_unique_id()
@@ -141,3 +149,20 @@ class TestDatabase:
         result = db.is_user_online(user_id)
         assert result is True
 
+    def test_delete_rows(self, db):
+        user_id = generate_unique_id()
+        db.add_to('Users', UserID=user_id, UserName='Test User', Password='hashed_password', IsOnline=1, IsAccept=1)
+        db.delete_rows('Users', "UserID = '{}'".format(user_id))
+
+        result = db.get_one('Users', 'UserID', user_id)
+        assert result is None
+
+    def test_delete_columns(self, db):
+        user_id = generate_unique_id()
+        db.add_to('Users', UserID=user_id, UserName='Test User', Password='hashed_password', IsOnline=1, IsAccept=1)
+        db.delete_columns('Users', "UserID = '{}'".format(user_id), 'UserName', 'Password')
+
+        result = db.get_one('Users', 'UserID', user_id)
+        assert result is not None
+        assert result[2] is None  # UserName should be NULL
+        assert result[3] is None  # Password should be NULL

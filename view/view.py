@@ -28,7 +28,7 @@ class View(QMainWindow):
         }
 
         # Set initial page
-        self.set_page(self.Pages.CHATTING)
+        self.set_page(self.Pages.REQUESTS)
 
     def set_page(self, page: EnumPages) -> None:
         try:
