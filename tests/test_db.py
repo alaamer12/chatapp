@@ -140,6 +140,16 @@ class TestDatabase:
         result = db.get_all('Friends', 'RoomID', 'Name', 'UserID')
         assert (0, 'Friend1', user_id) in result
 
+    def test_get_one(self, db):
+        user_id = generate_unique_id()
+        db.add_to('Users', UserID=friend_id, UserName='Friend Name', Password='hashed_password', IsOnline=1, IsAccept=1)
+
+        db.add_to('Users', UserID=user_id, FriendID=friend_id, UserName='Test User', Password='hashed_password',
+                  IsOnline=1, IsAccept=1)
+
+        result = db.get_one('Users', 'UserID', user_id)
+        assert (user_id) in result
+
     def test_is_user_online(self, db):
         user_id = generate_unique_id()
         db.add_to('Users', UserID=friend_id, UserName='Friend Name', Password='hashed_password', IsOnline=1, IsAccept=1)

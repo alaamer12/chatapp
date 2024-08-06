@@ -3,7 +3,6 @@ from PyQt5.QtWidgets import QMainWindow
 from view.ui_main import Ui_MainWindow
 from .pages.chatting_page import Chatting
 from .pages.requests_page import Requests
-from .pages.settings_page import Settings
 from .pages.signin_page import SignIn
 from .pages.signup_page import SignUp
 from .pages.constants import Pages as EnumPages
@@ -23,12 +22,19 @@ class View(QMainWindow):
             self.Pages.LOGIN: SignIn(controller, self.ui),
             self.Pages.REGISTRATION: SignUp(controller, self.ui),
             self.Pages.CHATTING: Chatting(controller, self.ui),
-            self.Pages.SETTINGS: Settings(controller, self.ui),
             self.Pages.REQUESTS: Requests(controller, self.ui),
+            self.Pages.SETTINGS: None
         }
 
         # Set initial page
-        self.set_page(self.Pages.REQUESTS)
+        self.set_page(self.Pages.LOGIN)
+        self._connect_tabs_signals()
+
+    def _connect_tabs_signals(self):
+        self.ui.chatting_button.clicked.connect(lambda: self.ui.stackedWidget.setCurrentIndex(0))
+        self.ui.requests_button.clicked.connect(lambda: self.ui.stackedWidget.setCurrentIndex(1))
+        self.ui.settings_button.clicked.connect(lambda: self.ui.stackedWidget.setCurrentIndex(2))
+        self.ui.signout_button.clicked.connect(lambda: self.set_page(self.Pages.LOGIN))
 
     def set_page(self, page: EnumPages) -> None:
         try:
@@ -41,6 +47,8 @@ class View(QMainWindow):
                 print(f"No page object found for {page}")
         except Exception as e:
             print(f"Error setting page {page}: {e}")
+
+
 
     def show_invalid_message(self, label_name: str):
         label = getattr(self.ui, label_name, None)

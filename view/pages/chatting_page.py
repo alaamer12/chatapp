@@ -17,30 +17,21 @@ class Chatting(BasePage):
         self.rooms_widgets: dict[int, QWidget] = {}
         self.messages_widgets: dict[int, QWidget] = {}
         self._clear_messages()
+        self.initialize_page()
 
     def initialize_page(self):
         self.user = self.controller.get_.current_user()
-        # self.ui.messages_scrollarea.hide()
-        # self.ui.no_rooms_label.show()
+        self.ui.messages_scrollarea.hide()
+        self.ui.no_rooms_label.show()
         self._create_rooms()
         self._connect_signals()
 
-    def _connect_tabs_signals(self):
-        self.ui.chatting_chatting_button.clicked.connect(
-            lambda: self.controller.handle_.tabs_clicked(self.ui.chatting_chatting_button.text().strip()))
-        self.ui.chatting_exit_button.clicked.connect(
-            lambda: self.controller.handle_.tabs_clicked(self.ui.chatting_exit_button.text().strip()))
-        self.ui.chatting_requests_button.clicked.connect(
-            lambda: self.controller.handle_.tabs_clicked(self.ui.chatting_requests_button.text().strip()))
-        self.ui.chatting_settings_button.clicked.connect(
-            lambda: self.controller.handle_.tabs_clicked(self.ui.chatting_settings_button.text().strip()))
 
     def _connect_signals(self):
-        self._connect_tabs_signals()
-        self.ui.send_message_button.clicked.connect(self._on_send_clicked)
+        self.ui.send_message_button_3.clicked.connect(self._on_send_clicked)
 
     def _create_room(self, name: str, username: str, y_position: int, room_id: int):
-        self.room = QtWidgets.QWidget(self.ui.rooms_scrollArea_contents)
+        self.room = QtWidgets.QWidget(self.ui.rooms_scrollArea_contents_3)
         self.room.setGeometry(QtCore.QRect(0, y_position, 251, 71))
         self.room.setObjectName("room")
 
@@ -105,7 +96,7 @@ class Chatting(BasePage):
         message_height = estimated_lines * 20 + 70  # 20 pixels per line + 60 for padding and date
 
         # Create the message widget
-        message_widget = QWidget(self.ui.messages_scrollarea)
+        message_widget = QWidget(self.ui.messages_scrollarea_contents)
         message_style = "QWidget{background-color: rgb(30, 30, 30); border-radius: 8px;}" if is_sender else "QWidget{background-color: #BB86FC; border-radius: 8px;}"
         message_widget.setStyleSheet(message_style)
         message_widget.setObjectName("sender_message" if is_sender else "receiver_message")
@@ -162,7 +153,7 @@ class Chatting(BasePage):
 
     def _on_send_clicked(self):
         print("clicked")
-        message: str = self.ui.sned_textinput.text().strip()
+        message: str = self.ui.send_textinput_3.text().strip()
         if message:
             print(message)
             now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -171,7 +162,7 @@ class Chatting(BasePage):
             self.controller.handle_.sending_message(len(self.messages_widgets), message)
 
             # Update GUI
-            self.ui.sned_textinput.setText(self._translate("MainWindow", ""))
+            self.ui.send_textinput_3.setText(self._translate("MainWindow", ""))
             message_height = self._create_message(message_id=len(self.messages_widgets), message=message, date=now,
                                                   position=self.next_message_position, is_sender=True)
             self.next_message_position += message_height + NEXT_MESSAGE_PADDING

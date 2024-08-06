@@ -18,45 +18,13 @@ class Model:
         self.username = username
 
     def send_message(self, current_user, message_id, message, now, room_id):
-        self.db.add_to("Message", MessageID=message_id,  UserID=current_user, Content=message, DateTime=now, RoomID=room_id)
-
+        self.db.add_to("Message", MessageID=message_id, UserID=current_user, Content=message, DateTime=now,
+                       RoomID=room_id)
 
     def get_rooms(self, user_id):
         condition = f"UserID = '{user_id}' OR FriendID = '{user_id}'"
         results = self.db.get_all_where("Friends", condition, "RoomID", "FriendID", "UserName")
         return results
-
-    # def get_rooms(self, user_id) -> list[tuple]:
-    #     friend_data = ["FriendName", "FriendID", "RoomID"]
-    #     user_data = ["UName", "UserID", "RoomID"]
-    #     condition = f"FriendID = '{user_id}'"
-    #
-    #     # Fetch results from the database
-    #     results: list[tuple] = self.db.get_all_where("Friends", condition, "RoomID", "FriendID", 'FriendName', "UserID",
-    #                                                  "UName")
-    #
-    #     if results:
-    #         processed_results = []
-    #         for result in results:
-    #             # Map result to user_data
-    #             mapped_result = dict(zip(user_data, result))
-    #             processed_results.append(mapped_result)
-    #             print(mapped_result)  # For debugging
-    #     else:
-    #         processed_results = []
-    #         for result in results:
-    #             # Map result to friend_data
-    #             mapped_result = dict(zip(friend_data, result))
-    #             processed_results.append(mapped_result)
-    #             print(mapped_result)  # For debugging
-    #
-    #     return processed_results
-
-    def set_room_id(self):
-        pass
-
-    def _generate_request_id(self):
-        pass
 
     def accept_action(self, request_id: int, user_id: str, friend_id: str):
         # Update the request status to accepted
@@ -75,7 +43,8 @@ class Model:
             user_name = result[2] if result[2] else "Unknown"
 
         # Add the user to the friends list
-        self.db.add_to("Friends", RoomID=self.id, UserID=user_id, FriendID=friend_id, UserName=user_name, FriendName=friend_name)
+        self.db.add_to("Friends", RoomID=self.id, UserID=user_id, FriendID=friend_id, UserName=user_name,
+                       FriendName=friend_name)
         self.id = + 1
 
     def decline_action(self, request_id: int, user_id: str, friend_id: str):
@@ -163,7 +132,7 @@ class Model:
                 request_dict = {
                     'RequestID': result[0],
                     'UserID': result[1],
-                    'Name': user_names.get(result[1], ''),  # Get the name from the dictionary
+                    'Name': user_names.get(result[1], 'Unknown'),  # Get the name from the dictionary
                     'FriendID': result[2],
                     'IsAccept': result[3],
                     'RequestDateTime': result[4]

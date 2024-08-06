@@ -775,7 +775,7 @@ QPushButton:hover {
         <property name="frameShadow">
          <enum>QFrame::Raised</enum>
         </property>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="chatting_button">
          <property name="geometry">
           <rect>
            <x>10</x>
@@ -784,14 +784,23 @@ QPushButton:hover {
            <height>71</height>
           </rect>
          </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
          <property name="styleSheet">
-          <string notr="true">background-color: white</string>
+          <string notr="true">QPushButton{
+background-image:url(:/icons/icons/Vector.png);
+ background-position: center;
+
+ background-repeat: no-repeat;
+color: transparent
+}</string>
          </property>
          <property name="text">
           <string/>
          </property>
         </widget>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="requests_button">
          <property name="geometry">
           <rect>
            <x>10</x>
@@ -800,14 +809,24 @@ QPushButton:hover {
            <height>71</height>
           </rect>
          </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
          <property name="styleSheet">
-          <string notr="true">background-color: white</string>
+          <string notr="true">QPushButton{
+background-image:url(:/icons/icons/Group 1.png);
+ background-position: center;
+
+ background-repeat: no-repeat;
+color: transparent
+}
+</string>
          </property>
          <property name="text">
           <string/>
          </property>
         </widget>
-        <widget class="QPushButton" name="pushButton_3">
+        <widget class="QPushButton" name="settings_button">
          <property name="geometry">
           <rect>
            <x>10</x>
@@ -816,14 +835,23 @@ QPushButton:hover {
            <height>71</height>
           </rect>
          </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
          <property name="styleSheet">
-          <string notr="true">background-color: white</string>
+          <string notr="true">QPushButton{
+background-image: url(:/icons/icons/settings.png);
+ background-position: center;
+
+ background-repeat: no-repeat;
+color: transparent
+}</string>
          </property>
          <property name="text">
           <string/>
          </property>
         </widget>
-        <widget class="QPushButton" name="pushButton_4">
+        <widget class="QPushButton" name="signout_button">
          <property name="geometry">
           <rect>
            <x>10</x>
@@ -832,8 +860,17 @@ QPushButton:hover {
            <height>71</height>
           </rect>
          </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
          <property name="styleSheet">
-          <string notr="true">background-color: white</string>
+          <string notr="true">QPushButton{
+background-image:url(:/icons/icons/Sign-out.png);
+ background-position: center;
+
+ background-repeat: no-repeat;
+color: transparent
+}</string>
          </property>
          <property name="text">
           <string/>
@@ -1158,13 +1195,13 @@ color: white;
              <property name="styleSheet">
               <string notr="true">background-color: rgb(30, 30, 30);</string>
              </property>
-             <widget class="QLineEdit" name="sned_textinput_3">
+             <widget class="QLineEdit" name="send_textinput_3">
               <property name="geometry">
                <rect>
                 <x>10</x>
                 <y>0</y>
                 <width>431</width>
-                <height>51</height>
+                <height>41</height>
                </rect>
               </property>
               <property name="styleSheet">
@@ -1490,7 +1527,7 @@ background-image: url(:/images/images/Untitled design 250x250.png);
   </widget>
  </widget>
  <resources>
-  <include location="E:/Projects/Languages/Python/chatapp/assets/assets.qrc"/>
+  <include location="../assets/assets.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -16,7 +16,7 @@ class Requests(BasePage):
         self.next_request_y = 0
         self.request_widgets: Dict[int, QtWidgets.QWidget] = {}
         requests: list[dict] = None
-        # self.initialize_page()
+        self.initialize_page()
 
     @staticmethod
     def run_once(fn):
@@ -43,18 +43,7 @@ class Requests(BasePage):
         if not self.ui.request_scrollArea_contents.layout():
             self.ui.request_scrollArea_contents.setLayout(QtWidgets.QVBoxLayout())
 
-    def _connect_tab_signals(self):
-        self.ui.requests_chatting_button.clicked.connect(
-            lambda: self.controller.handle_.tabs_clicked(self.ui.chatting_chatting_button.text().strip()))
-        self.ui.requests_exit_button.clicked.connect(
-            lambda: self.controller.handle_.tabs_clicked(self.ui.chatting_exit_button.text().strip()))
-        self.ui.requests_requests_button.clicked.connect(
-            lambda: self.controller.handle_.tabs_clicked(self.ui.chatting_requests_button.text().strip()))
-        self.ui.requests_settings_button.clicked.connect(
-            lambda: self.controller.handle_.tabs_clicked(self.ui.chatting_settings_button.text().strip()))
-
     def _connect_signals(self):
-        self._connect_tab_signals()
         self.ui.send_button.clicked.connect(self._on_send_clicked)
 
     def _on_send_clicked(self):
