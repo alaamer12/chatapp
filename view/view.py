@@ -48,8 +48,6 @@ class View(QMainWindow):
         except Exception as e:
             print(f"Error setting page {page}: {e}")
 
-
-
     def show_invalid_message(self, label_name: str):
         label = getattr(self.ui, label_name, None)
         if label:

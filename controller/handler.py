@@ -1,14 +1,15 @@
 from typing import Optional
-import pickle
+import threading
 from PyQt5.QtCore import pyqtSlot
 from datetime import datetime
 
 
 class Handler:
+    room_id_clicked = None
 
-    def __init__(self, controller):
+    def __init__(self, controller, current_user):
         self.controller = controller
-        self.current_user: Optional[str] = self._get_user()
+        self.current_user: Optional[str] = current_user
         self.current_room: Optional[int] = None
         print(f"Current user: {self.current_user}")
 
@@ -17,22 +18,9 @@ class Handler:
             return False
         success = self.controller.model.has_record(table='Users', UserID=username, Password=password)
         if success:
-            self._save_user(username)
+            self.controller.save_user(username)
             self.current_user = username
         return success
-
-    @staticmethod
-    def _get_user():
-        try:
-            with open('user.pkl', 'rb') as f:
-                return pickle.load(f)
-        except (FileNotFoundError, EOFError, pickle.UnpicklingError):
-            return None
-
-    @staticmethod
-    def _save_user(user):
-        with open('user.pkl', 'wb') as f:
-            pickle.dump(user, f)
 
     def signup_clicked(self):
         registration = self.controller.view.Pages.REGISTRATION
@@ -46,9 +34,9 @@ class Handler:
         if self._null_check(name, username, password):
             return False
 
-        success = self.controller.model.set_newuser(name, username, password)
+        success = self.controller.model.set_new_user(name, username, password)
         if success:
-            self._save_user(username)
+            self.controller.save_user(username)
             self.current_user = username
         return success
 
@@ -66,22 +54,25 @@ class Handler:
     def sending_request(self, search_value):
         return self.controller.model.send_request(self.current_user, search_value)
 
-    def sending_message(self, message_id, message):
+    def sending_message(self, message):
         now = datetime.now()
         now.strftime("%Y-%m-%d %H:%M:%S")
-        return self.controller.model.send_message(self.current_user, message_id, message, now, self.current_room)
+        result = self.controller.model.save_message(self.current_user, message, now, self.current_room)
+        if result:
+            self.controller.send_message(message)
+            return result
 
     def request_action(self, request_id, action, friend_id):
         if action == "accept":
-            self.controller.model.accept_action(request_id, self.current_user, friend_id)
+            self.controller.model.save_accept_action(request_id, self.current_user, friend_id)
         elif action == "decline":
-            self.controller.model.decline_action(request_id, self.current_user, friend_id)
+            self.controller.model.save_decline_action(request_id, self.current_user, friend_id)
 
     def requests(self):
-        return self.controller.model.get_request(self.current_user)
+        return self.controller.model.fetch_requests(self.current_user)
 
     def rooms(self):
-        results = self.controller.model.get_rooms(self.current_user)
+        results = self.controller.model.fetch_rooms(self.current_user)
         results_dict = {}
         for result in results:
             results_dict = {
@@ -94,10 +85,12 @@ class Handler:
     def loading_messages(self, room_id):
         self.current_room = room_id
         print(f"Current room: {self.current_room}")
-        results: list[tuple] = self.controller.model.get_messages(room_id)
+        self.start_client_thread()
+        results: list[tuple] = self.controller.model.fetch_messages(room_id)
         messages_list = []
         for result in results:
             results_dict = {
+                'MessageID': result[0],
                 'UserID': result[1],
                 'Content': result[2],
                 'DateTime': result[3],
@@ -105,3 +98,9 @@ class Handler:
             }
             messages_list.append(results_dict)
         return messages_list
+
+    def start_client_thread(self):
+        print("Clicked Room:", self.current_room)
+        client_thread = threading.Thread(target=self.controller.model.start_client)
+        client_thread.start()
+

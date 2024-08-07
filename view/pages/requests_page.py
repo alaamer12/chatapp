@@ -2,10 +2,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QPushButton
 from .base_page import BasePage
 from typing import Optional, Dict
-from faker import Faker
 from .constants import NEXT_REQUEST_PADDING, SAFE_REQUESTS_AREA_SIZE
-
-fake = Faker()
 
 
 class Requests(BasePage):
@@ -15,22 +12,8 @@ class Requests(BasePage):
         self.decline_button: Optional[QPushButton] = None
         self.next_request_y = 0
         self.request_widgets: Dict[int, QtWidgets.QWidget] = {}
-        requests: list[dict] = None
         self.initialize_page()
 
-    @staticmethod
-    def run_once(fn):
-        """Decorator to ensure a function is only run once."""
-
-        def wrapper(*args, **kwargs):
-            if not wrapper.has_run:
-                wrapper.has_run = True
-                return fn(*args, **kwargs)
-
-        wrapper.has_run = False
-        return wrapper
-
-    # @run_once
     def initialize_page(self):
         print("Initializing Requests Page...")
         self._initialize_layout()
@@ -39,7 +22,6 @@ class Requests(BasePage):
 
     def _initialize_layout(self):
         print("Initializing Layout...")
-        # Ensure the scroll area has a layout set
         if not self.ui.request_scrollArea_contents.layout():
             self.ui.request_scrollArea_contents.setLayout(QtWidgets.QVBoxLayout())
 
@@ -60,11 +42,15 @@ class Requests(BasePage):
         self.ui.friend_request_label.setText(text)
         self.ui.friend_request_label.setStyleSheet(f"color: {color}")
 
-    def _create_request_widget(self, fullname, username, date: str, y_position: int, request_id: int):
+    def _create_request_widget(self, y_position: int, request_id: int) -> QtWidgets.QWidget:
         widget = QtWidgets.QWidget(self.ui.request_scrollArea_contents)
         widget.setGeometry(QtCore.QRect(0, y_position, 231, 161))
         widget.setObjectName(f"request_{request_id}")
+        widget.setProperty("request_id", request_id)  # Store request_id as a property
+        return widget
 
+    @staticmethod
+    def _create_request_labels(widget: QtWidgets.QWidget, fullname: str, date: str):
         label_request = QtWidgets.QLabel("Request:", widget)
         label_request.setGeometry(QtCore.QRect(10, 10, 47, 13))
         label_request.setStyleSheet("color: white")
@@ -82,39 +68,57 @@ class Requests(BasePage):
         date_label.setStyleSheet("color: white;")
         date_label.setWordWrap(True)
 
+        return label_request, name_label, date_label
+
+    def _create_buttons(self, widget: QtWidgets.QWidget, request_id: int):
         button_container = QtWidgets.QWidget(widget)
         button_container.setGeometry(QtCore.QRect(20, 110, 181, 41))
         button_layout = QtWidgets.QHBoxLayout(button_container)
         button_layout.setContentsMargins(0, 0, 0, 0)
 
-        accept_button = QPushButton("Accept", button_container)
-        accept_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        accept_button.setStyleSheet("background-color: #444444; color: #E0E0E0; border-radius: 5px;"
-                                    " width: 70px; height: 35px;")
-        button_layout.addWidget(accept_button)
+        accept_button = self._create_button("Accept", "#444444", "#E0E0E0", button_container)
+        decline_button = self._create_button("Decline", "#CF6679", "#E0E0E0", button_container)
 
+        button_layout.addWidget(accept_button)
         button_layout.addItem(
             QtWidgets.QSpacerItem(8, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum))
-
-        decline_button = QPushButton("Decline", button_container)
-        decline_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        decline_button.setStyleSheet("background-color: #CF6679; color: #E0E0E0; border-radius: 5px;"
-                                     " width: 70px; height: 35px;")
         button_layout.addWidget(decline_button)
 
+        accept_button.clicked.connect(lambda: self._on_request_action(request_id, "accept"))
+        decline_button.clicked.connect(lambda: self._on_request_action(request_id, "decline"))
+
+    @staticmethod
+    def _create_button(text: str, background_color: str, text_color: str,
+                       parent: QtWidgets.QWidget) -> QtWidgets.QPushButton:
+        button = QtWidgets.QPushButton(text, parent)
+        button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        button.setStyleSheet(
+            f"background-color: {background_color}; color: {text_color}; border-radius: 5px; width: 70px; height: 35px;")
+        return button
+
+    @staticmethod
+    def _create_username_label(widget: QtWidgets.QWidget, username: str):
         username_label = QtWidgets.QLabel(username, widget)
         username_label.setGeometry(QtCore.QRect(10, 50, 211, 16))
         username_label.setStyleSheet("color: #A0A0A0")
+        return username_label
 
+    @staticmethod
+    def _create_separator(widget: QtWidgets.QWidget):
         separator = QtWidgets.QFrame(widget)
         separator.setGeometry(QtCore.QRect(0, 150, 231, 20))
         separator.setFrameShape(QtWidgets.QFrame.HLine)
         separator.setFrameShadow(QtWidgets.QFrame.Sunken)
+        return separator
+
+    def _create_request(self, fullname, username, date: str, y_position: int, request_id: int):
+        widget = self._create_request_widget(y_position, request_id)
+        self._create_request_labels(widget, fullname, date)
+        self._create_buttons(widget, request_id)
+        self._create_username_label(widget, username)
+        self._create_separator(widget)
 
         self.request_widgets[request_id] = widget
-
-        accept_button.clicked.connect(lambda: self._on_request_action(request_id, "accept"))
-        decline_button.clicked.connect(lambda: self._on_request_action(request_id, "decline"))
 
     def _populate_requests(self):
         self._clear_requests()
@@ -122,7 +126,7 @@ class Requests(BasePage):
         num_requests = len(self.requests)
         if num_requests > 0:
             for i in range(num_requests):
-                self._create_request_widget(
+                self._create_request(
                     fullname=self.requests[i]["Name"],
                     username=self.requests[i]["UserID"],
                     date=self.requests[i]["RequestDateTime"],
@@ -143,10 +147,12 @@ class Requests(BasePage):
 
     def _on_request_action(self, request_id: int, action: str):
         print(self.requests)
-        userid = self.requests[request_id]["UserID"]
-        print(userid)
-        if self._on_request_action_helper(request_id):
-            self.controller.handle_.request_action(request_id, action, userid)
+        # Retrieve the request_id directly from the widget
+        if request_id in self.request_widgets:
+            userid = next((req["UserID"] for req in self.requests if req["RequestID"] == request_id), None)
+            if userid:
+                if self._on_request_action_helper(request_id):
+                    self.controller.handle_.request_action(request_id, action, userid)
 
     def _on_request_action_helper(self, request_id: int) -> bool:
         if request_id in self.request_widgets:
@@ -162,21 +168,30 @@ class Requests(BasePage):
         return False
 
     def _update_request_positions(self, removed_id: int, start_y: int):
+        self._adjust_widget_positions(removed_id, start_y)
+        self._update_scroll_area_height()
+
+    def _adjust_widget_positions(self, removed_id: int, start_y: int):
         sorted_ids = sorted(self.request_widgets.keys())
         for req_id in sorted_ids:
             if req_id > removed_id:
-                widget = self.request_widgets.pop(req_id)
-                new_y = start_y + (req_id - removed_id - 1) * NEXT_REQUEST_PADDING
-                widget.setGeometry(QtCore.QRect(0, new_y, 231, 161))
-                self.request_widgets[req_id] = widget
+                self._move_widget(req_id, start_y)
 
+    def _move_widget(self, req_id: int, start_y: int):
+        widget = self.request_widgets.pop(req_id)
+        new_y = start_y + (req_id - 1) * NEXT_REQUEST_PADDING
+        widget.setGeometry(QtCore.QRect(0, new_y, 231, 161))
+        self.request_widgets[req_id] = widget
+
+    def _update_scroll_area_height(self):
         if self.request_widgets:
-            last_widget = next(reversed(self.request_widgets.values()))
-            self.next_request_y = last_widget.geometry().bottom() + NEXT_REQUEST_PADDING
-        elif not self.request_widgets or len(self.request_widgets) == 1:
-            self.next_request_y = 0
+            self._set_next_request_y_from_last_widget()
         else:
             self.next_request_y = 0
 
         self.ui.request_scrollArea_contents.setMinimumHeight(self.next_request_y)
         self.ui.request_scrollArea_contents.update()
+
+    def _set_next_request_y_from_last_widget(self):
+        last_widget = next(reversed(self.request_widgets.values()))
+        self.next_request_y = last_widget.geometry().bottom() + NEXT_REQUEST_PADDING

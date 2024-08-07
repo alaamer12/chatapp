@@ -1,5 +1,7 @@
-from colorama import Fore
+from colorama import Fore, init
 
+
+init()
 
 def print_info(*messages):
     print(Fore.BLUE + 'INFO: ', *messages, Fore.RESET)
